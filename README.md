@@ -16,6 +16,8 @@ The toolkit is targeted to be used on **Windows** station only (most common clie
 
 The toolkit archive is created via this [PowerShell script](Build-Toolkit.ps1) in which, each tool, is added via its dedicated function named `Add-xxx`.
 
+The script is tested on Windows 10 Pro with PS 5.1 .
+
 The script is developed using [Visual Studio Code](https://code.visualstudio.com/) and a [pre-configured workspace file](workspace.code-workspace) is provided in order to project into it.
 
 # Next steps?
