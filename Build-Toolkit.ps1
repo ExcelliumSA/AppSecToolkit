@@ -156,8 +156,20 @@ function Add-PythonEnv {
     Get-ChildItem -Path .\$WorkFolder\PythonEnv\Scripts\Activate.ps1
     Invoke-Expression -Command ".\$WorkFolder\PythonEnv\Scripts\Activate.ps1"
     Write-Host ">>>> Add external modules to Env..." -ForegroundColor Yellow
-    $modules = "requests-pkcs12 colorama termcolor pycryptodomex httpie tabulate ansi2html asciinema droopescan pycurl wfuzz regexploit name-that-hash mmh3 jmespath pyjwt dicttoxml"
+    #$modules = "requests requests-pkcs12 colorama termcolor pycryptodomex httpie tabulate ansi2html asciinema droopescan pycurl wfuzz regexploit name-that-hash mmh3 jmespath pyjwt dicttoxml"
+    $modules = "requests httpie droopescan pycurl wfuzz pyjwt dicttoxml"
     python -m pip install $modules 
+    Write-Host "<< Added!" -ForegroundColor Yellow
+}
+
+function Add-PortScanTools {
+    Write-Host ">> Add PortScanTools..." -ForegroundColor Yellow
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/naabu/releases/download/v2.0.4/naabu_2.0.4_windows_amd64.zip" -OutFile "$WorkFolder\nb.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\nb.zip" -DestinationPath "$WorkFolder\PortScan"
+    Remove-Item "$WorkFolder\nb.zip"
+    Get-RemoteFile -Uri "https://nmap.org/dist/nmap-7.92-win32.zip" -OutFile "$WorkFolder\nmap.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\nmap.zip" -DestinationPath "$WorkFolder\PortScan"
+    Remove-Item "$WorkFolder\nmap.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
@@ -185,6 +197,7 @@ Add-GitPortable
 Add-Sysinternals
 Add-Wireshark
 Add-CyberChef
+Add-PortScanTools
 #Add-SecListsRepoCopy
 Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor Yellow
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
