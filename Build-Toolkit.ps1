@@ -29,12 +29,11 @@ function Get-RemoteFile {
     )
     # See https://adamtheautomator.com/powershell-download-file/
     if ($UseClassicWay) {
-        Invoke-WebRequest -Uri $Uri -OutFile $OutFile -UseBasicParsing
+        (New-Object Net.WebClient).Downloadfile($Uri, $OutFile)
     }
     else {
         Start-BitsTransfer -Source $Uri -Destination $OutFile -TransferType Download
     }
-
 }
 
 function Add-FFUF {
@@ -99,16 +98,20 @@ function Add-VSCode {
 }
 
 function Add-Browsers {
-    Write-Host ">> Add portable browsers..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://portableapps.com/downloading/?a=FirefoxPortable&n=Mozilla%20Firefox,%20Portable%20Edition&s=s&p=&d=pa&f=FirefoxPortable_91.0_English.paf.exe" -OutFile "$WorkFolder\firefox-portable.exe" -UseClassicWay
-    Get-RemoteFile -Uri "https://download-chromium.appspot.com/dl/Win_x64?type=snapshots" -OutFile "$WorkFolder\chromium-portable.zip"
+    Write-Host ">> Add portable browsers and useful FF extensions..." -ForegroundColor Yellow
+    New-Item -ItemType "directory" -Path "$WorkFolder\Browsers"
+    Get-RemoteFile -Uri "https://portableapps.com/downloading/?a=FirefoxPortable&n=Mozilla%20Firefox,%20Portable%20Edition&s=s&p=&d=pa&f=FirefoxPortable_91.0_English.paf.exe" -OutFile "$WorkFolder\Browsers\firefox-portable.exe" -UseClassicWay
+    Get-RemoteFile -Uri "https://download-chromium.appspot.com/dl/Win_x64?type=snapshots" -OutFile "$WorkFolder\Browsers\chromium-portable.zip" -UseClassicWay
+    Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3616824/foxyproxy_standard-7.5.1-an+fx.xpi" -OutFile "$WorkFolder\Browsers\FF-FoxyProxyStandard.xpi" -UseClassicWay
+    Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3811501/tab_reloader_page_auto_refresh-0.3.7-fx.xpi" -OutFile "$WorkFolder\Browsers\FF-TabReloader.xpi" -UseClassicWay
+    Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3821991/firefox_multi_account_containers-7.4.0-fx.xpi" -OutFile "$WorkFolder\Browsers\FF-MultiAccountContainer.xpi" -UseClassicWay
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
 function Add-KeyStoreExplorer {
     Write-Host ">> Add KeyStoreExplorer..." -ForegroundColor Yellow
     Get-RemoteFile -Uri "https://github.com/kaikramer/keystore-explorer/releases/download/v5.4.4/kse-544.zip" -OutFile "$WorkFolder\kse.zip"
-    Expand-Archive -LiteralPath "$WorkFolder\kse.zip" -DestinationPath "$WorkFolder"
+    Expand-Archive -LiteralPath "$WorkFolder\kse.zip" -DestinationPath "$WorkFolder\KeyStoreExplorer"
     Remove-Item "$WorkFolder\kse.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
@@ -135,6 +138,21 @@ function Add-Wireshark {
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
+function Add-CyberChef {
+    Write-Host ">> Add CyberChef..." -ForegroundColor Yellow
+    Get-RemoteFile -Uri "https://gchq.github.io/CyberChef/CyberChef_v9.30.0.zip" -OutFile "$WorkFolder\cc.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\cc.zip" -DestinationPath "$WorkFolder\CyberChef"
+    Remove-Item "$WorkFolder\cc.zip"
+    Write-Host "<< Added!" -ForegroundColor Yellow
+}
+
+function Add-PythonEnv {
+    # See https://docs.python.org/3/library/venv.html
+    # See https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment
+    python3 -m venv "$WorkFolder\PythonEnv"
+    .\$WorkFolder\PythonEnv\activate
+    py -m pip install requests requests-pkcs12 tabulate colorama termcolor 
+}
 
 ###############################
 # Main section
@@ -146,6 +164,7 @@ Remove-Item $WorkFolder -ErrorAction Ignore -Force -Recurse
 Remove-Item $TKArchiveName -ErrorAction Ignore -Force
 New-Item -ItemType "directory" -Path $WorkFolder
 Write-Host "[+] Add tools:" -ForegroundColor Yellow
+Add-PythonEnv
 Add-FFUF
 Add-BurpCE
 Add-JDK
@@ -158,12 +177,13 @@ Add-KeyStoreExplorer
 Add-GitPortable
 Add-Sysinternals
 Add-Wireshark
+Add-CyberChef
 #Add-SecListsRepoCopy
 Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor Yellow
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
 Remove-Item $WorkFolder\LICENSE -ErrorAction Ignore -Force
 Write-Host "[+] Create the archive..." -ForegroundColor Yellow
-Compress-Archive -Path $WorkFolder -DestinationPath $TKArchiveName
+Compress-Archive -Path $WorkFolder -DestinationPath $TKArchiveName -CompressionLevel Optimal
 Write-Host "[+] Cleanup..." -ForegroundColor Yellow
 Remove-Item $WorkFolder -ErrorAction Ignore -Force -Recurse
 $stopwatch.Stop()
