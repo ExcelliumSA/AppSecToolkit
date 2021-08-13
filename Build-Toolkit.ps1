@@ -158,7 +158,6 @@ function Add-PythonEnv {
     Write-Host ">>>> Add external modules to Env..." -ForegroundColor Yellow
     pip install requests
     pip install httpie
-    pip install wfuzz
     pip install pyjwt
     pip install droopescan
     Write-Host "<< Added!" -ForegroundColor Yellow
