@@ -28,6 +28,17 @@ A release can be downloaded [here](https://github.com/ExcelliumSA/AppSecToolkit/
 
 The file `Hash.txt` contains the SHA-256 digest of the kit ZIP archive.
 
+Once the ZIP is expanded, you can init a shell in the toolkit using the following PowerShell command:
+
+```powershell
+PS> .\shell.ps1
+[+] Environement:
+...
+[+] Toolkit base:
+...
+(PythonEnv)> [POWERSHELL PROMPT SHELL]
+```
+
 # Next steps?
 
 See [here](https://github.com/ExcelliumSA/AppSecToolkit/projects/2).

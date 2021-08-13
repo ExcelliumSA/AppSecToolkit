@@ -1,11 +1,22 @@
 # Configure a PS shell for the tool kit usage
-.\$WorkFolder\PythonEnv\Scripts\Activate.ps1
-$env:JAVA_HOME = "${pwd}\jdk-11.0.12+7"
-$env:PATH += "${pwd};${pwd}\Curl;${pwd}\Wget;${pwd}\PortScan;${pwd}\jdk-11.0.12+7\bin"
+# Identity dynamically the tools path
+Remove-Item alias:curl
+Remove-Item alias:wget
+$base=pwd
+.\PythonEnv\Scripts\Activate.ps1
+Set-Location .\jdk-*
+$env:JAVA_HOME = "${pwd}"
+Set-Location $base
+$env:PATH += ";${pwd};${pwd}\PortScan;${pwd}\Wget\bin;${$env:JAVA_HOME}\bin;"
+Set-Location $base
+Set-Location .\Curl\curl-*\bin\
+$env:PATH += ";${pwd};"
+Set-Location $base
 Write-Host "[+] Environement:"
 python --version
 java --version
 javac --version
-curl --version
-wget --version
+curl.exe --version
+wget.exe --version
 nmap --version
+naabu -version
