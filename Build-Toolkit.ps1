@@ -178,6 +178,18 @@ function Add-PortScanTools {
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
+function Add-MiscTools {
+    Write-Host ">> Add MiscTools..." -ForegroundColor Yellow
+    Get-RemoteFile -Uri "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe" -OutFile "$WorkFolder\jq.exe"
+    Get-RemoteFile -Uri "https://curl.se/windows/dl-7.78.0/curl-7.78.0-win64-mingw.zip" -OutFile "$WorkFolder\curl.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\curl.zip" -DestinationPath "$WorkFolder\Curl"
+    Remove-Item "$WorkFolder\curl.zip"
+    Get-RemoteFile -Uri "http://downloads.sourceforge.net/gnuwin32/wget-1.11.4-1-bin.zip" -OutFile "$WorkFolder\wg.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\wg.zip" -DestinationPath "$WorkFolder\Wget"
+    Remove-Item "$WorkFolder\wg.zip"
+    Write-Host "<< Added!" -ForegroundColor Yellow
+}
+
 ###############################
 # Main section
 ###############################
@@ -204,6 +216,7 @@ Add-Wireshark
 Add-CyberChef
 Add-PortScanTools
 Add-SecListsRepoCopy
+Add-MiscTools
 Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor Yellow
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
 Remove-Item $WorkFolder\LICENSE -ErrorAction Ignore -Force
