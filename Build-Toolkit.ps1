@@ -158,7 +158,8 @@ function Add-PythonEnv {
     Write-Host ">>>> Add external modules to Env..." -ForegroundColor Yellow
     #$modules = "requests requests-pkcs12 colorama termcolor pycryptodomex httpie tabulate ansi2html asciinema droopescan pycurl wfuzz regexploit name-that-hash mmh3 jmespath pyjwt dicttoxml"
     $modules = "requests httpie droopescan pycurl wfuzz pyjwt dicttoxml"
-    python -m pip install $modules 
+    #python -m pip install $modules 
+    pip install requests
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
