@@ -3,17 +3,19 @@ name: Assemble Toolkit
 on:
   workflow_dispatch:
   schedule:
-    - cron: '0 8 * * 6'  
+    - cron: "0 8 * * 6"
+  push:
+    branches:
+      - main
 jobs:
   build:
     runs-on: ${{ matrix.os }}
     strategy:
       matrix:
-        os: [ windows-latest ]
+        os: [windows-latest]
     steps:
       - name: Checkout on ${{ matrix.os }}
         uses: actions/checkout@v2
       - name: Assemble tookit on ${{ matrix.os }}
         run: .\Build-Toolkit.ps1
         shell: powershell
-
