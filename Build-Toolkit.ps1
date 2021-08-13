@@ -149,9 +149,14 @@ function Add-CyberChef {
 function Add-PythonEnv {
     # See https://docs.python.org/3/library/venv.html
     # See https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment
+    Write-Host ">> Add PythonEnv..." -ForegroundColor Yellow
+    Write-Host ">>>> Create Env..." -ForegroundColor Yellow
     python3 -m venv "$WorkFolder\PythonEnv"
-    .\$WorkFolder\PythonEnv\activate
+    Write-Host ">>>> Activate Env..." -ForegroundColor Yellow
+    Invoke-Expression ".\$WorkFolder\PythonEnv\activate"
+    Write-Host ">>>> Add external modules to Env..." -ForegroundColor Yellow
     py -m pip install requests requests-pkcs12 tabulate colorama termcolor 
+    Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
 ###############################
