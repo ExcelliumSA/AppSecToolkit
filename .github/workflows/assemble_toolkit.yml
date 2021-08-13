@@ -19,3 +19,19 @@ jobs:
       - name: Assemble tookit on ${{ matrix.os }}
         run: .\Build-Toolkit.ps1
         shell: powershell
+      - name: Verify ZIP archive on ${{ matrix.os }}
+        run: 7z t Toolkit.zip
+        shell: powershell
+      - name: Create hash of archive on ${{ matrix.os }}
+        run: Get-FileHash .\Toolkit.zip | Select-Object -Property Hash | Out-File -FilePath Hash.txt -Encoding "utf8"
+        shell: powershell
+      - name: Release the ZIP archive on ${{ matrix.os }}
+        uses: marvinpinto/action-automatic-releases@v1.2.1
+        with:
+          repo_token: "${{ secrets.GITHUB_TOKEN }}"
+          automatic_release_tag: "latest"
+          prerelease: false
+          title: "Toolkit built"
+          files: |
+            Toolkit.zip
+            Hash.txt
