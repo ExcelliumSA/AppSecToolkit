@@ -12,7 +12,7 @@ Set-Location $base
 Set-Location .\Curl\curl-*\bin\
 $env:PATH += ";${pwd};"
 Set-Location $base
-Write-Host "[+] Environement:"
+Write-Host "[+] Environement:" -ForegroundColor Yellow
 python --version
 java --version
 javac --version
@@ -20,3 +20,5 @@ curl.exe --version
 wget.exe --version
 nmap --version
 naabu -version
+Write-Host "[+] Toolkit base:" -ForegroundColor Yellow
+$base
