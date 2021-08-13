@@ -153,7 +153,8 @@ function Add-PythonEnv {
     Write-Host ">>>> Create Env..." -ForegroundColor Yellow
     python -m venv "$WorkFolder\PythonEnv"
     Write-Host ">>>> Activate Env..." -ForegroundColor Yellow
-    Invoke-Expression ".\$WorkFolder\PythonEnv\activate"
+    Get-ChildItem -Recurse -Path ".\$WorkFolder\PythonEnv"
+    & ".\$WorkFolder\PythonEnv\activate"
     Write-Host ">>>> Add external modules to Env..." -ForegroundColor Yellow
     python -m pip install requests requests-pkcs12 tabulate colorama termcolor 
     Write-Host "<< Added!" -ForegroundColor Yellow
