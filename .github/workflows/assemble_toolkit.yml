@@ -23,7 +23,7 @@ jobs:
         run: 7z t Toolkit.zip
         shell: powershell
       - name: Create hash of archive on ${{ matrix.os }}
-        run: Get-FileHash .\Toolkit.zip | Select-Object -Property Hash | Out-File -FilePath Hash.txt -Encoding "utf8"
+        run: Get-FileHash -Algorithm SHA256 .\Toolkit.zip | Select-Object -Property Hash | Out-File -FilePath Hash.txt -Encoding "utf8"
         shell: powershell
       - name: Release the ZIP archive on ${{ matrix.os }}
         uses: marvinpinto/action-automatic-releases@v1.2.1
@@ -31,7 +31,7 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           prerelease: false
-          title: "Toolkit built"
+          title: "Toolkit built from commit $GITHUB_REF"
           files: |
             Toolkit.zip
             Hash.txt
