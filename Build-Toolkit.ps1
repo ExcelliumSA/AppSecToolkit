@@ -153,6 +153,7 @@ function Add-PythonEnv {
     Write-Host ">>>> Create Env..." -ForegroundColor Yellow
     python -m venv "$WorkFolder\PythonEnv"
     Write-Host ">>>> Activate Env..." -ForegroundColor Yellow
+    Get-ChildItem -Path .\$WorkFolder\PythonEnv\Scripts\Activate.ps1
     .\$WorkFolder\PythonEnv\Scripts\Activate.ps1
     Write-Host ">>>> Add external modules to Env..." -ForegroundColor Yellow
     $modules = "requests-pkcs12 colorama termcolor pycryptodomex httpie tabulate ansi2html asciinema droopescan pycurl wfuzz regexploit name-that-hash mmh3 jmespath pyjwt dicttoxml"
