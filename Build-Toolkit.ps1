@@ -156,10 +156,11 @@ function Add-PythonEnv {
     Get-ChildItem -Path .\$WorkFolder\PythonEnv\Scripts\Activate.ps1
     Invoke-Expression -Command ".\$WorkFolder\PythonEnv\Scripts\Activate.ps1"
     Write-Host ">>>> Add external modules to Env..." -ForegroundColor Yellow
-    #$modules = "requests requests-pkcs12 colorama termcolor pycryptodomex httpie tabulate ansi2html asciinema droopescan pycurl wfuzz regexploit name-that-hash mmh3 jmespath pyjwt dicttoxml"
-    $modules = "requests httpie droopescan pycurl wfuzz pyjwt dicttoxml"
-    #python -m pip install $modules 
     pip install requests
+    pip install httpie
+    pip install wfuzz
+    pip install pyjwt
+    pip install droopescan
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
