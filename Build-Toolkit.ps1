@@ -164,6 +164,8 @@ Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
 Remove-Item $WorkFolder\LICENSE -ErrorAction Ignore -Force
 Write-Host "[+] Create the archive..." -ForegroundColor Yellow
 Compress-Archive -Path $WorkFolder -DestinationPath $TKArchiveName
+Write-Host "[+] Cleanup..." -ForegroundColor Yellow
+Remove-Item $WorkFolder -ErrorAction Ignore -Force -Recurse
 $stopwatch.Stop()
 $processingTime = $stopwatch.Elapsed.Minutes
 Write-Host "[+] Processing finished in $processingTime minutes!" -ForegroundColor Yellow
