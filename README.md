@@ -36,7 +36,7 @@ PS> .\shell.ps1
 ...
 [+] Toolkit base:
 ...
-(PythonEnv)> [POWERSHELL PROMPT SHELL]
+(PythonEnv)> [POWERSHELL SHELL WITH PYTHON ENV LOADED]
 ```
 
 # Next steps?
