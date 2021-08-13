@@ -31,7 +31,7 @@ jobs:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
           prerelease: false
-          title: "Toolkit built from ${{ github.sha }}"
+          title: "Toolkit built from commit ${{ github.sha }}"
           files: |
             Toolkit.zip
             Hash.txt
