@@ -153,7 +153,6 @@ function Add-PythonEnv {
     Write-Host ">>>> Create Env..." -ForegroundColor Yellow
     python -m venv "$WorkFolder\PythonEnv"
     Write-Host ">>>> Activate Env..." -ForegroundColor Yellow
-    Get-ChildItem -Path .\$WorkFolder\PythonEnv\Scripts\Activate.ps1
     Invoke-Expression -Command ".\$WorkFolder\PythonEnv\Scripts\Activate.ps1"
     Write-Host ">>>> Add external modules to Env..." -ForegroundColor Yellow
     pip install requests
@@ -221,6 +220,7 @@ Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor 
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
 Remove-Item $WorkFolder\LICENSE -ErrorAction Ignore -Force
 Write-Host "[+] Create the archive..." -ForegroundColor Yellow
+Copy-Item "shell.ps1" -Destination "$WorkFolder"
 Compress-Archive -Path $WorkFolder -DestinationPath $TKArchiveName -CompressionLevel Optimal
 Write-Host "[+] Cleanup..." -ForegroundColor Yellow
 Remove-Item $WorkFolder -ErrorAction Ignore -Force -Recurse
