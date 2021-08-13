@@ -160,6 +160,10 @@ function Add-PythonEnv {
     pip install httpie
     pip install pyjwt
     pip install droopescan
+    pip install tabulate
+    pip install colorama
+    pip install termcolor
+    pip install requests-pkcs12 
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
@@ -199,7 +203,7 @@ Add-Sysinternals
 Add-Wireshark
 Add-CyberChef
 Add-PortScanTools
-#Add-SecListsRepoCopy
+Add-SecListsRepoCopy
 Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor Yellow
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
 Remove-Item $WorkFolder\LICENSE -ErrorAction Ignore -Force
