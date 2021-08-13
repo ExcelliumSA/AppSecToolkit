@@ -1,10 +1,6 @@
 name: Assemble Toolkit
 # See https://docs.github.com/en/free-pro-team@latest/actions/reference/specifications-for-github-hosted-runners
 on:
-  push:
-    branches: [ main ]
-  pull_request:
-    branches: [ main ]
   workflow_dispatch:
   schedule:
     - cron: '0 8 * * 6'  
