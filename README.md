@@ -2,7 +2,7 @@
 
 # What?
 
-This project create a archive with a collection of free and open source tools that are needed for different kinds of assessmement.
+This project create a archive with a collection of free and open source tools that are needed for different kinds of assessment.
 
 # Why?
 

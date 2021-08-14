@@ -105,6 +105,8 @@ function Add-Browsers {
     Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3616824/foxyproxy_standard-7.5.1-an+fx.xpi" -OutFile "$WorkFolder\Browsers\FF-FoxyProxyStandard.xpi" -UseClassicWay
     Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3811501/tab_reloader_page_auto_refresh-0.3.7-fx.xpi" -OutFile "$WorkFolder\Browsers\FF-TabReloader.xpi" -UseClassicWay
     Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3821991/firefox_multi_account_containers-7.4.0-fx.xpi" -OutFile "$WorkFolder\Browsers\FF-MultiAccountContainer.xpi" -UseClassicWay
+    Expand-Archive -LiteralPath "$WorkFolder\Browsers\chromium-portable.zip" -DestinationPath "$WorkFolder\Browsers\Chromium"
+    Remove-Item "$WorkFolder\Browsers\chromium-portable.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
@@ -186,6 +188,23 @@ function Add-MiscTools {
     Get-RemoteFile -Uri "http://downloads.sourceforge.net/gnuwin32/wget-1.11.4-1-bin.zip" -OutFile "$WorkFolder\wg.zip"
     Expand-Archive -LiteralPath "$WorkFolder\wg.zip" -DestinationPath "$WorkFolder\Wget"
     Remove-Item "$WorkFolder\wg.zip"
+    Get-RemoteFile -Uri "https://github.com/rbsec/sslscan/releases/download/2.0.10/sslscan-win-2.0.10.zip" -OutFile "$WorkFolder\ssl.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\ssl.zip" -DestinationPath "$WorkFolder"
+    Remove-Item "$WorkFolder\ssl.zip"
+    Get-RemoteFile -Uri "https://github.com/nabla-c0d3/sslyze/releases/download/4.1.0/sslyze-4.1.0-exe.zip" -OutFile "$WorkFolder\ssl.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\ssl.zip" -DestinationPath "$WorkFolder\SSLyze"
+    Remove-Item "$WorkFolder\ssl.zip"
+    Write-Host "<< Added!" -ForegroundColor Yellow
+}
+
+function Add-Nuclei {
+    Write-Host ">> Add Nuclei..." -ForegroundColor Yellow
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei/releases/download/v2.4.3/nuclei_2.4.3_windows_amd64.zip" -OutFile "$WorkFolder\nuclei.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\nuclei.zip" -DestinationPath "$WorkFolder"
+    Remove-Item "$WorkFolder\nuclei.zip"
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei-templates/archive/refs/heads/master.zip" -OutFile "$WorkFolder\nuclei-tpl.zip" -UseClassicWay 
+    Expand-Archive -LiteralPath "$WorkFolder\nuclei-tpl.zip" -DestinationPath "$WorkFolder\NucleiTemplates"
+    Remove-Item "$WorkFolder\nuclei-tpl.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
@@ -216,6 +235,7 @@ Add-CyberChef
 Add-PortScanTools
 Add-SecListsRepoCopy
 Add-MiscTools
+Add-Nuclei
 Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor Yellow
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
 Remove-Item $WorkFolder\LICENSE -ErrorAction Ignore -Force
