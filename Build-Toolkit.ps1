@@ -179,23 +179,7 @@ function Add-PortScanTools {
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
-function Add-MiscTools {
-    Write-Host ">> Add MiscTools..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe" -OutFile "$WorkFolder\jq.exe"
-    Get-RemoteFile -Uri "https://curl.se/windows/dl-7.78.0/curl-7.78.0-win64-mingw.zip" -OutFile "$WorkFolder\curl.zip"
-    Expand-Archive -LiteralPath "$WorkFolder\curl.zip" -DestinationPath "$WorkFolder\Curl"
-    Remove-Item "$WorkFolder\curl.zip"
-    Get-RemoteFile -Uri "http://downloads.sourceforge.net/gnuwin32/wget-1.11.4-1-bin.zip" -OutFile "$WorkFolder\wg.zip"
-    Expand-Archive -LiteralPath "$WorkFolder\wg.zip" -DestinationPath "$WorkFolder\Wget"
-    Remove-Item "$WorkFolder\wg.zip"
-    Get-RemoteFile -Uri "https://github.com/rbsec/sslscan/releases/download/2.0.10/sslscan-win-2.0.10.zip" -OutFile "$WorkFolder\sslscan.zip"
-    Expand-Archive -LiteralPath "$WorkFolder\sslscan.zip" -DestinationPath "$WorkFolder\SSLScan"
-    Remove-Item "$WorkFolder\sslscan.zip"
-    Get-RemoteFile -Uri "https://github.com/nabla-c0d3/sslyze/releases/download/4.1.0/sslyze-4.1.0-exe.zip" -OutFile "$WorkFolder\sslyze.zip"
-    Expand-Archive -LiteralPath "$WorkFolder\sslyze.zip" -DestinationPath "$WorkFolder\SSLyze"
-    Remove-Item "$WorkFolder\sslyze.zip"
-    Write-Host "<< Added!" -ForegroundColor Yellow
-}
+
 
 function Add-Nuclei {
     Write-Host ">> Add Nuclei and its templates..." -ForegroundColor Yellow
@@ -214,6 +198,40 @@ function Add-Cmder {
     Expand-Archive -LiteralPath "$WorkFolder\cmder.zip" -DestinationPath "$WorkFolder\Cmder"
     Remove-Item "$WorkFolder\cmder.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow      
+}
+
+function Add-MiscTools {
+    Write-Host ">> Add MiscTools..." -ForegroundColor Yellow
+    Get-RemoteFile -Uri "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe" -OutFile "$WorkFolder\jq.exe"
+    Get-RemoteFile -Uri "https://curl.se/windows/dl-7.78.0/curl-7.78.0-win64-mingw.zip" -OutFile "$WorkFolder\curl.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\curl.zip" -DestinationPath "$WorkFolder\Curl"
+    Remove-Item "$WorkFolder\curl.zip"
+    Get-RemoteFile -Uri "http://downloads.sourceforge.net/gnuwin32/wget-1.11.4-1-bin.zip" -OutFile "$WorkFolder\wg.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\wg.zip" -DestinationPath "$WorkFolder\Wget"
+    Remove-Item "$WorkFolder\wg.zip"
+    Get-RemoteFile -Uri "https://github.com/rbsec/sslscan/releases/download/2.0.10/sslscan-win-2.0.10.zip" -OutFile "$WorkFolder\sslscan.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\sslscan.zip" -DestinationPath "$WorkFolder\SSLScan"
+    Remove-Item "$WorkFolder\sslscan.zip"
+    Get-RemoteFile -Uri "https://github.com/nabla-c0d3/sslyze/releases/download/4.1.0/sslyze-4.1.0-exe.zip" -OutFile "$WorkFolder\sslyze.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\sslyze.zip" -DestinationPath "$WorkFolder\SSLyze"
+    Remove-Item "$WorkFolder\sslyze.zip"
+    Write-Host "<< Added!" -ForegroundColor Yellow
+}
+
+function Add-7zip {
+    # No portable version of 7zip with GUI provided so instruction are provided to install it as USER on the target machine
+    Write-Host ">> Add 7zip..." -ForegroundColor Yellow
+    New-Item -ItemType "directory" -Path "$WorkFolder\7zip"    
+    "msiexec /i 7z1900-x64.msi INSTALLDIR=%USERPROFILE%\7-Zip\ MSIINSTALLPERUSER=1" | Out-File -FilePath "$WorkFolder\7zip\Install-Instruction.txt" -Encoding "utf8" 
+    Get-RemoteFile -Uri "https://www.7-zip.org/a/7z1900-x64.msi" -OutFile "$WorkFolder\7zip\7z1900-x64.msi"
+    Write-Host "<< Added!" -ForegroundColor Yellow
+}
+
+function Add-WindowsTerminal {
+    # Provide the file to install it as user on the target machine because no portable mode is provided
+    Write-Host ">> Add WindowsTerminal..." -ForegroundColor Yellow
+    Get-RemoteFile -Uri "https://github.com/microsoft/terminal/releases/download/v1.9.1942.0/Microsoft.WindowsTerminal_1.9.1942.0_8wekyb3d8bbwe.msixbundle" -OutFile "$WorkFolder\WindowsTerminal.msixbundle"
+    Write-Host "<< Added!" -ForegroundColor Yellow   
 }
 
 ###############################
@@ -245,6 +263,8 @@ Add-SecListsRepoCopy
 Add-MiscTools
 Add-Nuclei
 Add-Cmder
+Add-7zip
+Add-WindowsTerminal
 Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor Yellow
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
 Remove-Item $WorkFolder\LICENSE -ErrorAction Ignore -Force
