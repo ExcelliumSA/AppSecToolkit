@@ -188,17 +188,17 @@ function Add-MiscTools {
     Get-RemoteFile -Uri "http://downloads.sourceforge.net/gnuwin32/wget-1.11.4-1-bin.zip" -OutFile "$WorkFolder\wg.zip"
     Expand-Archive -LiteralPath "$WorkFolder\wg.zip" -DestinationPath "$WorkFolder\Wget"
     Remove-Item "$WorkFolder\wg.zip"
-    Get-RemoteFile -Uri "https://github.com/rbsec/sslscan/releases/download/2.0.10/sslscan-win-2.0.10.zip" -OutFile "$WorkFolder\ssl.zip"
-    Expand-Archive -LiteralPath "$WorkFolder\ssl.zip" -DestinationPath "$WorkFolder"
-    Remove-Item "$WorkFolder\ssl.zip"
-    Get-RemoteFile -Uri "https://github.com/nabla-c0d3/sslyze/releases/download/4.1.0/sslyze-4.1.0-exe.zip" -OutFile "$WorkFolder\ssl.zip"
-    Expand-Archive -LiteralPath "$WorkFolder\ssl.zip" -DestinationPath "$WorkFolder\SSLyze"
-    Remove-Item "$WorkFolder\ssl.zip"
+    Get-RemoteFile -Uri "https://github.com/rbsec/sslscan/releases/download/2.0.10/sslscan-win-2.0.10.zip" -OutFile "$WorkFolder\sslscan.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\sslscan.zip" -DestinationPath "$WorkFolder\SSLScan"
+    Remove-Item "$WorkFolder\sslscan.zip"
+    Get-RemoteFile -Uri "https://github.com/nabla-c0d3/sslyze/releases/download/4.1.0/sslyze-4.1.0-exe.zip" -OutFile "$WorkFolder\sslyze.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\sslyze.zip" -DestinationPath "$WorkFolder\SSLyze"
+    Remove-Item "$WorkFolder\sslyze.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
 function Add-Nuclei {
-    Write-Host ">> Add Nuclei..." -ForegroundColor Yellow
+    Write-Host ">> Add Nuclei and its templates..." -ForegroundColor Yellow
     Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei/releases/download/v2.4.3/nuclei_2.4.3_windows_amd64.zip" -OutFile "$WorkFolder\nuclei.zip"
     Expand-Archive -LiteralPath "$WorkFolder\nuclei.zip" -DestinationPath "$WorkFolder"
     Remove-Item "$WorkFolder\nuclei.zip"
@@ -206,6 +206,14 @@ function Add-Nuclei {
     Expand-Archive -LiteralPath "$WorkFolder\nuclei-tpl.zip" -DestinationPath "$WorkFolder\NucleiTemplates"
     Remove-Item "$WorkFolder\nuclei-tpl.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
+}
+
+function Add-Cmder {
+    Write-Host ">> Add Cmder (full)..." -ForegroundColor Yellow
+    Get-RemoteFile -Uri "https://github.com/cmderdev/cmder/releases/download/v1.3.18/cmder.zip" -OutFile "$WorkFolder\cmder.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\cmder.zip" -DestinationPath "$WorkFolder\Cmder"
+    Remove-Item "$WorkFolder\cmder.zip"
+    Write-Host "<< Added!" -ForegroundColor Yellow      
 }
 
 ###############################
@@ -236,6 +244,7 @@ Add-PortScanTools
 Add-SecListsRepoCopy
 Add-MiscTools
 Add-Nuclei
+Add-Cmder
 Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor Yellow
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
 Remove-Item $WorkFolder\LICENSE -ErrorAction Ignore -Force
