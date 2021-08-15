@@ -180,7 +180,6 @@ function Add-PortScanTools {
 }
 
 
-
 function Add-Nuclei {
     Write-Host ">> Add Nuclei and its templates..." -ForegroundColor Yellow
     Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei/releases/download/v2.4.3/nuclei_2.4.3_windows_amd64.zip" -OutFile "$WorkFolder\nuclei.zip"
@@ -234,6 +233,15 @@ function Add-WindowsTerminal {
     Write-Host "<< Added!" -ForegroundColor Yellow   
 }
 
+function Add-Interactsh {
+    Write-Host ">> Add Interactsh..." -ForegroundColor Yellow
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/interactsh/releases/download/v0.0.4/interactsh_0.0.4_windows_amd64.zip" -OutFile "$WorkFolder\int.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\int.zip" -DestinationPath "$WorkFolder\Interactsh"
+    "interactsh-client.exe -n 1 -json -o call.json" | Out-File -FilePath "$WorkFolder\Interactsh\ClientUsage-Instruction.txt" -Encoding "utf8" 
+    Remove-Item "$WorkFolder\int.zip"
+    Write-Host "<< Added!" -ForegroundColor Yellow
+}
+
 ###############################
 # Main section
 ###############################
@@ -265,6 +273,7 @@ Add-Nuclei
 Add-Cmder
 Add-7zip
 Add-WindowsTerminal
+Add-Interactsh
 Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor Yellow
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
 Remove-Item $WorkFolder\LICENSE -ErrorAction Ignore -Force
