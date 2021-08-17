@@ -42,6 +42,17 @@ PS> .\shell.ps1
 (PythonEnv)> [POWERSHELL SHELL WITH PYTHON ENV LOADED]
 ```
 
+Use the following set of PowerShell commands to grab and check the archive (*copy and paste the block of commands in a PowerShell shell*):
+
+```powershell
+Start-BitsTransfer -Source "https://github.com/ExcelliumSA/AppSecToolkit/releases/download/latest/Toolkit.zip" -Destination ".\Toolkit.zip"
+Start-BitsTransfer -Source "https://github.com/ExcelliumSA/AppSecToolkit/releases/download/latest/Hash.txt" -Destination ".\Hash.txt"
+Get-Content ".\Hash.txt"
+Get-FileHash ".\Toolkit.zip" -Algorithm SHA256 | Format-List
+# Check that that hashes are equals, if yes:
+# Expand-Archive -Path .\Toolkit.zip
+```
+
 # Next steps?
 
 See [here](https://github.com/ExcelliumSA/AppSecToolkit/projects/2).
