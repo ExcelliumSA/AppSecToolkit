@@ -23,7 +23,7 @@ jobs:
         run: 7z t Toolkit.zip
         shell: powershell
       - name: Create hash of archive on ${{ matrix.os }}
-        run: Get-FileHash -Algorithm SHA256 .\Toolkit.zip | Out-File -FilePath Hash.txt -Encoding "utf8"
+        run: Get-FileHash -Algorithm SHA256 .\Toolkit.zip | Format-List | Out-File -FilePath Hash.txt -Encoding "utf8"
         shell: powershell
       - name: Release the ZIP archive on ${{ matrix.os }}
         uses: marvinpinto/action-automatic-releases@v1.2.1
