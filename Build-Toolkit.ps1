@@ -100,7 +100,7 @@ function Add-VSCode {
 function Add-Browsers {
     Write-Host ">> Add portable browsers and useful FF extensions..." -ForegroundColor Yellow
     New-Item -ItemType "directory" -Path "$WorkFolder\Browsers"
-    Get-RemoteFile -Uri "https://portableapps.com/downloading/?a=FirefoxPortable&n=Mozilla%20Firefox,%20Portable%20Edition&s=s&p=&d=pa&f=FirefoxPortable_91.0_English.paf.exe" -OutFile "$WorkFolder\Browsers\firefox-portable.exe"
+    Get-RemoteFile -Uri "https://portableapps.com/downloading/?a=FirefoxPortable&n=Mozilla%20Firefox,%20Portable%20Edition&s=s&p=&d=pa&f=FirefoxPortable_91.0_English.paf.exe" -OutFile "$WorkFolder\Browsers\firefox-portable.exe" -UseClassicWay
     Get-RemoteFile -Uri "https://download-chromium.appspot.com/dl/Win_x64?type=snapshots" -OutFile "$WorkFolder\Browsers\chromium-portable.zip" -UseClassicWay
     Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3616824/foxyproxy_standard-7.5.1-an+fx.xpi" -OutFile "$WorkFolder\Browsers\FF-FoxyProxyStandard.xpi" -UseClassicWay
     Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3811501/tab_reloader_page_auto_refresh-0.3.7-fx.xpi" -OutFile "$WorkFolder\Browsers\FF-TabReloader.xpi" -UseClassicWay
@@ -137,6 +137,7 @@ function Add-Sysinternals {
 function Add-Wireshark {
     Write-Host ">> Add Wireshark..." -ForegroundColor Yellow
     Get-RemoteFile -Uri "https://1.eu.dl.wireshark.org/win32/WiresharkPortable_3.4.7.paf.exe" -OutFile "$WorkFolder\wireshark-portable.exe"
+    Get-RemoteFile -Uri "https://nmap.org/npcap/dist/npcap-1.50.exe" -Destination "$WorkFolder\npcap.exe"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
