@@ -149,15 +149,11 @@ function Add-CyberChef {
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
-function Add-PythonEnv {
+function Add-Python {
     # See https://docs.python.org/3/library/venv.html
     # See https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment
-    Write-Host ">> Add PythonEnv..." -ForegroundColor Yellow
-    Write-Host ">>>> Create Env..." -ForegroundColor Yellow
-    python -m venv "$WorkFolder\PythonEnv"
-    Write-Host ">>>> Activate Env..." -ForegroundColor Yellow
-    Invoke-Expression -Command ".\$WorkFolder\PythonEnv\Scripts\Activate.ps1"
-    Write-Host ">>>> Add external modules to Env..." -ForegroundColor Yellow
+    Write-Host ">> Add Python..." -ForegroundColor Yellow
+    Write-Host ">>>> Add external modules..." -ForegroundColor Yellow
     pip install requests
     pip install httpie
     pip install pyjwt
@@ -171,9 +167,6 @@ function Add-PythonEnv {
     Write-Host ">>>> Add Python version to the kit..." -ForegroundColor Yellow
     New-Item -ItemType "directory" -Path "$WorkFolder\Python"
     Copy-Item -Path "C:\hostedtoolcache\windows\Python\3.7.9\x64\*" -Destination "$WorkFolder\Python" -Recurse
-    #Get-RemoteFile -Uri "https://www.python.org/ftp/python/3.7.9/python-3.7.9-embed-amd64.zip" -OutFile "$WorkFolder\py.zip"
-    #Expand-Archive -LiteralPath "$WorkFolder\py.zip" -DestinationPath "$WorkFolder\Python"
-    #Remove-Item "$WorkFolder\py.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
@@ -261,7 +254,7 @@ Remove-Item $WorkFolder -ErrorAction Ignore -Force -Recurse
 Remove-Item $TKArchiveName -ErrorAction Ignore -Force
 New-Item -ItemType "directory" -Path $WorkFolder
 Write-Host "[+] Add tools:" -ForegroundColor Yellow
-Add-PythonEnv
+Add-Python
 Add-FFUF
 Add-BurpCE
 Add-JDK
