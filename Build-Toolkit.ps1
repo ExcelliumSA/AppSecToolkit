@@ -221,7 +221,7 @@ function Add-7zip {
     # No portable version of 7zip with GUI provided so instruction are provided to install it as USER on the target machine
     Write-Host ">> Add 7zip..." -ForegroundColor Yellow
     New-Item -ItemType "directory" -Path "$WorkFolder\7zip"    
-    "msiexec /i 7z1900-x64.msi INSTALLDIR=%USERPROFILE%\7-Zip\ MSIINSTALLPERUSER=1" | Out-File -FilePath "$WorkFolder\7zip\Install-Instruction.txt" -Encoding "utf8" 
+    "msiexec /i 7z1900-x64.msi INSTALLDIR=$pwd\7-Zip\ MSIINSTALLPERUSER=1" | Out-File -FilePath "$WorkFolder\7zip\Install-Instruction.txt" -Encoding "utf8" 
     Get-RemoteFile -Uri "https://www.7-zip.org/a/7z1900-x64.msi" -OutFile "$WorkFolder\7zip\7z1900-x64.msi"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
