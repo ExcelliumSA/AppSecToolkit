@@ -166,6 +166,14 @@ function Add-PythonEnv {
     pip install colorama
     pip install termcolor
     pip install requests-pkcs12 
+    # Add the version of Python used to perform the operation above:
+    # See https://github.com/actions/virtual-environments/blob/main/images/win/Windows2019-Readme.md#language-and-runtime
+    Write-Host ">>>> Add Python version to the kit..." -ForegroundColor Yellow
+    New-Item -ItemType "directory" -Path "$WorkFolder\Python"
+    Copy-Item -Path "C:\hostedtoolcache\windows\Python\3.7.9\x64\*" -Destination "$WorkFolder\Python" -Recurse
+    #Get-RemoteFile -Uri "https://www.python.org/ftp/python/3.7.9/python-3.7.9-embed-amd64.zip" -OutFile "$WorkFolder\py.zip"
+    #Expand-Archive -LiteralPath "$WorkFolder\py.zip" -DestinationPath "$WorkFolder\Python"
+    #Remove-Item "$WorkFolder\py.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
