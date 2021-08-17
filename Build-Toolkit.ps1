@@ -150,14 +150,10 @@ function Add-CyberChef {
 }
 
 function Add-Python {
-    # See https://docs.python.org/3/library/venv.html
-    # See https://packaging.python.org/guides/installing-using-pip-and-virtual-environments/#creating-a-virtual-environment
     Write-Host ">> Add Python..." -ForegroundColor Yellow
     Write-Host ">>>> Add external modules..." -ForegroundColor Yellow
     pip install requests
-    pip install httpie
     pip install pyjwt
-    pip install droopescan
     pip install tabulate
     pip install colorama
     pip install termcolor
