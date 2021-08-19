@@ -157,7 +157,8 @@ function Add-Python {
     pip install tabulate
     pip install colorama
     pip install termcolor
-    pip install requests-pkcs12 
+    pip install requests-pkcs12
+    pip install pyodbc
     # Add the version of Python used to perform the operation above:
     # See https://github.com/actions/virtual-environments/blob/main/images/win/Windows2019-Readme.md#language-and-runtime
     Write-Host ">>>> Add Python version to the kit..." -ForegroundColor Yellow
