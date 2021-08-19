@@ -100,7 +100,7 @@ function Add-VSCode {
 function Add-Browsers {
     Write-Host ">> Add portable browsers and useful FF extensions..." -ForegroundColor Yellow
     New-Item -ItemType "directory" -Path "$WorkFolder\Browsers"
-    # Get-RemoteFile -Uri "https://nav.dl.sourceforge.net/project/portableapps/Mozilla%20Firefox%2C%20Portable%20Ed./Mozilla%20Firefox%2C%20Portable%20Edition%2091.0.1/FirefoxPortable_91.0.1_English.paf.exe" -OutFile "$WorkFolder\Browsers\firefox-portable.exe" -UseClassicWay
+    Get-RemoteFile -Uri "https://nav.dl.sourceforge.net/project/portableapps/Mozilla%20Firefox%2C%20Portable%20Ed./Mozilla%20Firefox%2C%20Portable%20Edition%2091.0.1/FirefoxPortable_91.0.1_English.paf.exe" -OutFile "$WorkFolder\Browsers\firefox-portable.exe" -UseClassicWay
     Get-RemoteFile -Uri "https://download-chromium.appspot.com/dl/Win_x64?type=snapshots" -OutFile "$WorkFolder\Browsers\chromium-portable.zip" -UseClassicWay
     Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3616824/foxyproxy_standard-7.5.1-an+fx.xpi" -OutFile "$WorkFolder\Browsers\FF-FoxyProxyStandard.xpi" -UseClassicWay
     Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3811501/tab_reloader_page_auto_refresh-0.3.7-fx.xpi" -OutFile "$WorkFolder\Browsers\FF-TabReloader.xpi" -UseClassicWay
