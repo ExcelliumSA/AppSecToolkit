@@ -143,7 +143,7 @@ function Add-Wireshark {
 
 function Add-CyberChef {
     Write-Host ">> Add CyberChef..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://gchq.github.io/CyberChef/CyberChef_v9.30.0.zip" -OutFile "$WorkFolder\cc.zip"
+    Get-RemoteFile -Uri "https://github.com/gchq/CyberChef/releases/download/v9.32.1/CyberChef_v9.32.1.zip" -OutFile "$WorkFolder\cc.zip"
     Expand-Archive -LiteralPath "$WorkFolder\cc.zip" -DestinationPath "$WorkFolder\CyberChef"
     Remove-Item "$WorkFolder\cc.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
