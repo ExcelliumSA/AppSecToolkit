@@ -25,6 +25,10 @@ The script is tested on the following environments:
 
 The script is developed using [Visual Studio Code](https://code.visualstudio.com/) and a [pre-configured workspace file](workspace.code-workspace) is provided in order to project into it.
 
+The files `user_profile.(ps1|sh)` are used to define profile in [CMDER](https://cmder.net/) when a PowerShell / Bash shell is opened. 
+
+💬 See [here](https://github.com/cmderdev/cmder/tree/master/config) for more information about usage of these 2 files by [CMDER](https://cmder.net/).
+
 # Distribution of the kit
 
 A release can be downloaded [here](https://github.com/ExcelliumSA/AppSecToolkit/releases/tag/latest).
