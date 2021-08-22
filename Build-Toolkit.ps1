@@ -118,14 +118,6 @@ function Add-KeyStoreExplorer {
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
-function Add-GitPortable {
-    Write-Host ">> Add GitPortable..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/git-for-windows/git/releases/download/v2.32.0.windows.2/MinGit-2.32.0.2-64-bit.zip" -OutFile "$WorkFolder\gitportable.zip"
-    Expand-Archive -LiteralPath "$WorkFolder\gitportable.zip" -DestinationPath "$WorkFolder\GitPortable"
-    Remove-Item "$WorkFolder\gitportable.zip"
-    Write-Host "<< Added!" -ForegroundColor Yellow
-}
-
 function Add-Sysinternals {
     Write-Host ">> Add Sysinternals..." -ForegroundColor Yellow
     Get-RemoteFile -Uri "https://download.sysinternals.com/files/SysinternalsSuite.zip" -OutFile "$WorkFolder\sysint.zip"
@@ -191,7 +183,7 @@ function Add-Nuclei {
 }
 
 function Add-Cmder {
-    Write-Host ">> Add Cmder (full)..." -ForegroundColor Yellow
+    Write-Host ">> Add Cmder (full - include Git portable too)..." -ForegroundColor Yellow
     Get-RemoteFile -Uri "https://github.com/cmderdev/cmder/releases/download/v1.3.18/cmder.zip" -OutFile "$WorkFolder\cmder.zip"
     Expand-Archive -LiteralPath "$WorkFolder\cmder.zip" -DestinationPath "$WorkFolder\Cmder"
     Remove-Item "$WorkFolder\cmder.zip"
@@ -261,7 +253,6 @@ Add-NotepadPP
 Add-VSCode
 Add-Browsers
 Add-KeyStoreExplorer
-Add-GitPortable
 Add-Sysinternals
 Add-Wireshark
 Add-CyberChef
