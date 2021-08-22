@@ -187,6 +187,10 @@ function Add-Cmder {
     Get-RemoteFile -Uri "https://github.com/cmderdev/cmder/releases/download/v1.3.18/cmder.zip" -OutFile "$WorkFolder\cmder.zip"
     Expand-Archive -LiteralPath "$WorkFolder\cmder.zip" -DestinationPath "$WorkFolder\Cmder"
     Remove-Item "$WorkFolder\cmder.zip"
+    Write-Host ">>>> Add Powershell profile file" -ForegroundColor Yellow
+    Copy-Item -Path ".\user_profile.ps1" -Destination "$WorkFolder\Cmder\config" -Force
+    Write-Host ">>>> Add Bash profile file" -ForegroundColor Yellow
+    Copy-Item -Path ".\user_profile.sh" -Destination "$WorkFolder\Cmder\config" -Force    
     Write-Host "<< Added!" -ForegroundColor Yellow      
 }
 
