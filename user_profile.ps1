@@ -1,4 +1,5 @@
 # Use this file to run your own startup commands
+# See https://github.com/cmderdev/cmder/tree/master/config
 
 ## Prompt Customization
 <#
