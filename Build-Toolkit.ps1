@@ -237,6 +237,14 @@ function Add-Interactsh {
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
+function Add-SQLiteBrowser {
+    Write-Host ">> Add SQLiteBrowser..." -ForegroundColor Yellow
+    Get-RemoteFile -Uri "https://download.sqlitebrowser.org/DB.Browser.for.SQLite-3.12.2-win64.zip" -OutFile "$WorkFolder\sqlite.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\sqlite.zip" -DestinationPath "$WorkFolder"
+    Remove-Item "$WorkFolder\sqlite.zip"
+    Write-Host "<< Added!" -ForegroundColor Yellow
+}
+
 ###############################
 # Main section
 ###############################
@@ -268,6 +276,7 @@ Add-Cmder
 Add-7zip
 Add-WindowsTerminal
 Add-Interactsh
+Add-SQLiteBrowser
 Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor Yellow
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
 Remove-Item $WorkFolder\LICENSE -ErrorAction Ignore -Force
