@@ -7,10 +7,13 @@ javaBinExePath=$(find . -type f -name "java.exe")
 javaBinExePathFolder=$(dirname $(realpath $javaBinExePath))
 javaHome=$(dirname $javaBinExePathFolder)
 export JAVA_HOME=$javaHome
-for p in $(find . -maxdepth 3 -type d)
+for p in $(find $(pwd) -maxdepth 5 -type f -name "*.exe")
 do
-	fullPath=$(realpath $p)
-	export PATH=$PATH:$fullPath
+	fullPath=$(dirname $p)
+	if [ $(echo $PATH | grep -cF $fullPath) -lt 1 ]
+	then
+		export PATH=$PATH:$fullPath	
+	fi
 done
 echo "OK"
 alias ll='ls --color=auto -rtl'
