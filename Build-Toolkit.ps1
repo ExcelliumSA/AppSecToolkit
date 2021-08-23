@@ -281,7 +281,6 @@ Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor 
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
 Remove-Item $WorkFolder\LICENSE -ErrorAction Ignore -Force
 Write-Host "[+] Create the archive..." -ForegroundColor Yellow
-Copy-Item "shell.ps1" -Destination "$WorkFolder"
 Compress-Archive -Path $WorkFolder -DestinationPath $TKArchiveName -CompressionLevel Optimal
 Write-Host "[+] Cleanup..." -ForegroundColor Yellow
 Remove-Item $WorkFolder -ErrorAction Ignore -Force -Recurse
