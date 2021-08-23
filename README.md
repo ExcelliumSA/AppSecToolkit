@@ -25,7 +25,7 @@ The script is tested on the following environments:
 
 The script is developed using [Visual Studio Code](https://code.visualstudio.com/) and a [pre-configured workspace file](workspace.code-workspace) is provided in order to project into it.
 
-The files `user_profile.(ps1|sh)` are used to define profile in [CMDER](https://cmder.net/) when a PowerShell / Bash shell is opened. 
+The files `user_profile.(ps1|sh)` are used to define profile in [CMDER](https://cmder.net/) when a PowerShell / Bash shell is opened.
 
 💬 See [here](https://github.com/cmderdev/cmder/tree/master/config) for more information about usage of these 2 files by [CMDER](https://cmder.net/).
 
@@ -35,16 +35,7 @@ A release can be downloaded [here](https://github.com/ExcelliumSA/AppSecToolkit/
 
 The file `Hash.txt` contains the SHA-256 digest of the kit ZIP archive.
 
-Once the ZIP is expanded, you can init a shell in the toolkit using the following PowerShell command:
-
-```powershell
-PS> .\shell.ps1
-[+] Environement:
-...
-[+] Toolkit base:
-...
-(PythonEnv)> [POWERSHELL SHELL WITH PYTHON ENV LOADED]
-```
+💬 Once the ZIP is expanded, you can init a shell (Powershell/Bash) in the toolkit using the instance of [CMDER](https://cmder.net/) installed and configured (launch the file `Cmder.exe`).
 
 Use the following set of PowerShell commands to grab and check the archive (*copy and paste the block of commands in a PowerShell shell*):
 
