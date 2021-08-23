@@ -245,6 +245,14 @@ function Add-SQLiteBrowser {
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
+function Add-Greenshot {
+    Write-Host ">> Add Greenshot..." -ForegroundColor Yellow
+    Get-RemoteFile -Uri "https://github.com/greenshot/greenshot/releases/download/Greenshot-RELEASE-1.2.10.6/Greenshot-NO-INSTALLER-1.2.10.6-RELEASE.zip" -OutFile "$WorkFolder\grsh.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\grsh.zip" -DestinationPath "$WorkFolder\Greenshot"
+    Remove-Item "$WorkFolder\grsh.zip"
+    Write-Host "<< Added!" -ForegroundColor Yellow
+}
+
 ###############################
 # Main section
 ###############################
@@ -277,6 +285,7 @@ Add-7zip
 Add-WindowsTerminal
 Add-Interactsh
 Add-SQLiteBrowser
+Add-Greenshot
 Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor Yellow
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
 Remove-Item $WorkFolder\LICENSE -ErrorAction Ignore -Force
