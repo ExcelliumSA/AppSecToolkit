@@ -22,18 +22,26 @@
 
 }
 
-## Add any folder containing EXE file to $PATH
-Write-Host "[+] Setting PATH and JAVA_HOME environment variables..." -NoNewline
+## Add important EXE to $PATH
+Write-Host "[+] Setting environment variables..." -NoNewline
 cd ..
+$env:PATH += ";$pwd;"
 Get-ChildItem -Path "." -Include "*.exe" -Recurse -File -Force -ErrorAction SilentlyContinue | ForEach-Object -Process { 
 	if ($_.FullName -like "*java.exe") {
 		$x = $_.Directory.Parent.FullName
 		$env:JAVA_HOME = $x
+		$x = $_.DirectoryName
+		$env:PATH = ";$x;" + $env:PATH
 	}
-	$d = $_.DirectoryName	
-	if (-Not ($env:PATH -like "*$d*")) {
-		$env:PATH += ";$d;"
-	}  
+	if ($_.FullName -like "*python.exe") {
+		$x = $_.DirectoryName
+		$env:PYTHONHOME = $x
+		$env:PATH = ";$x;" + $env:PATH
+	}	
+	#$d = $_.DirectoryName	
+	#if (-Not ($env:PATH -like "*$d*")) {
+	#	$env:PATH += ";$d;"
+	#}  
 }
 Write-Host "OK"
 Remove-Item alias:curl
