@@ -274,7 +274,7 @@ function Add-PythonSecurityUtilityTools {
     Write-Host ">>>> Add JWTTool..." -ForegroundColor Yellow
     Get-RemoteFile -Uri "https://github.com/ticarpi/jwt_tool/archive/refs/heads/master.zip" -OutFile "$WorkFolder\jwttool.zip" -UseClassicWay
     Expand-Archive -LiteralPath "$WorkFolder\jwttool.zip" -DestinationPath "$WorkFolder"
-    pip install -r .\jwt_tool-master\requirements.txt
+    pip install -r "$WorkFolder\jwt_tool-master\requirements.txt"
     Remove-Item "$WorkFolder\jwttool.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
