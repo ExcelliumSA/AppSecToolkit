@@ -275,6 +275,7 @@ function Add-PythonSecurityUtilityTools {
     Get-RemoteFile -Uri "https://github.com/ticarpi/jwt_tool/archive/refs/heads/master.zip" -OutFile "$WorkFolder\jwttool.zip" -UseClassicWay
     Expand-Archive -LiteralPath "$WorkFolder\jwttool.zip" -DestinationPath "$WorkFolder"
     pip install -r "$WorkFolder\jwt_tool-master\requirements.txt"
+    pip install pycryptodomex
     Remove-Item "$WorkFolder\jwttool.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
