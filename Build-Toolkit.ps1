@@ -255,7 +255,7 @@ function Add-Greenshot {
 
 function Add-SoapUI {
     Write-Host ">> Add SoapUI..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://s3.amazonaws.com/downloads.eviware/soapuios/5.6.0/SoapUI-5.6.0-windows-bin.zip" -OutFile "$WorkFolder\sip.zip"
+    Get-RemoteFile -Uri "https://s3.amazonaws.com/downloads.eviware/soapuios/5.6.0/SoapUI-5.6.0-windows-bin.zip" -OutFile "$WorkFolder\sip.zip" -UseClassicWay
     Expand-Archive -LiteralPath "$WorkFolder\sip.zip" -DestinationPath "$WorkFolder"
     Remove-Item "$WorkFolder\sip.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
@@ -264,15 +264,15 @@ function Add-SoapUI {
 function Add-PythonSecurityUtilityTools {
     Write-Host ">> Add PythonSecurityUtilityTools..." -ForegroundColor Yellow
     Write-Host ">>>> Add SQLMap..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/sqlmapproject/sqlmap/archive/refs/heads/master.zip" -OutFile "$WorkFolder\sqlmap.zip"
+    Get-RemoteFile -Uri "https://github.com/sqlmapproject/sqlmap/archive/refs/heads/master.zip" -OutFile "$WorkFolder\sqlmap.zip" -UseClassicWay
     Expand-Archive -LiteralPath "$WorkFolder\sqlmap.zip" -DestinationPath "$WorkFolder"
     Remove-Item "$WorkFolder\sqlmap.zip"
     Write-Host ">>>> Add MaliciousPDFGenerator..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/jonaslejon/malicious-pdf/archive/refs/heads/main.zip" -OutFile "$WorkFolder\mpg.zip"
+    Get-RemoteFile -Uri "https://github.com/jonaslejon/malicious-pdf/archive/refs/heads/main.zip" -OutFile "$WorkFolder\mpg.zip" -UseClassicWay
     Expand-Archive -LiteralPath "$WorkFolder\mpg.zip" -DestinationPath "$WorkFolder"
     Remove-Item "$WorkFolder\mpg.zip"
     Write-Host ">>>> Add JWTTool..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/ticarpi/jwt_tool/archive/refs/heads/master.zip" -OutFile "$WorkFolder\jwttool.zip"
+    Get-RemoteFile -Uri "https://github.com/ticarpi/jwt_tool/archive/refs/heads/master.zip" -OutFile "$WorkFolder\jwttool.zip" -UseClassicWay
     Expand-Archive -LiteralPath "$WorkFolder\jwttool.zip" -DestinationPath "$WorkFolder"
     pip install -r .\jwt_tool-master\requirements.txt
     Remove-Item "$WorkFolder\jwttool.zip"
