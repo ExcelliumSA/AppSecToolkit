@@ -253,6 +253,14 @@ function Add-Greenshot {
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
+function Add-SoapUI {
+    Write-Host ">> Add SoapUI..." -ForegroundColor Yellow
+    Get-RemoteFile -Uri "https://s3.amazonaws.com/downloads.eviware/soapuios/5.6.0/SoapUI-5.6.0-windows-bin.zip" -OutFile "$WorkFolder\sip.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\sip.zip" -DestinationPath "$WorkFolder"
+    Remove-Item "$WorkFolder\sip.zip"
+    Write-Host "<< Added!" -ForegroundColor Yellow
+}
+
 ###############################
 # Main section
 ###############################
@@ -286,6 +294,7 @@ Add-WindowsTerminal
 Add-Interactsh
 Add-SQLiteBrowser
 Add-Greenshot
+Add-SoapUI
 Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor Yellow
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
 Remove-Item $WorkFolder\LICENSE -ErrorAction Ignore -Force
