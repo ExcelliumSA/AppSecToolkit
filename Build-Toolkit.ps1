@@ -261,6 +261,24 @@ function Add-SoapUI {
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
+function Add-PythonSecurityUtilityTools {
+    Write-Host ">> Add PythonSecurityUtilityTools..." -ForegroundColor Yellow
+    Write-Host ">>>> Add SQLMap..." -ForegroundColor Yellow
+    Get-RemoteFile -Uri "https://github.com/sqlmapproject/sqlmap/archive/refs/heads/master.zip" -OutFile "$WorkFolder\sqlmap.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\sqlmap.zip" -DestinationPath "$WorkFolder"
+    Remove-Item "$WorkFolder\sqlmap.zip"
+    Write-Host ">>>> Add MaliciousPDFGenerator..." -ForegroundColor Yellow
+    Get-RemoteFile -Uri "https://github.com/jonaslejon/malicious-pdf/archive/refs/heads/main.zip" -OutFile "$WorkFolder\mpg.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\mpg.zip" -DestinationPath "$WorkFolder"
+    Remove-Item "$WorkFolder\mpg.zip"
+    Write-Host ">>>> Add JWTTool..." -ForegroundColor Yellow
+    Get-RemoteFile -Uri "https://github.com/ticarpi/jwt_tool/archive/refs/heads/master.zip" -OutFile "$WorkFolder\jwttool.zip"
+    Expand-Archive -LiteralPath "$WorkFolder\jwttool.zip" -DestinationPath "$WorkFolder"
+    pip install -r .\jwt_tool-master\requirements.txt
+    Remove-Item "$WorkFolder\jwttool.zip"
+    Write-Host "<< Added!" -ForegroundColor Yellow
+}
+
 ###############################
 # Main section
 ###############################
@@ -286,7 +304,6 @@ Add-Wireshark
 Add-CyberChef
 Add-PortScanTools
 Add-SecListsRepoCopy
-Add-MiscTools
 Add-Nuclei
 Add-Cmder
 Add-7zip
@@ -295,6 +312,8 @@ Add-Interactsh
 Add-SQLiteBrowser
 Add-Greenshot
 Add-SoapUI
+Add-PythonSecurityUtilityTools
+Add-MiscTools
 Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor Yellow
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
 Remove-Item $WorkFolder\LICENSE -ErrorAction Ignore -Force
