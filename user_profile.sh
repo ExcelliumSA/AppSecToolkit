@@ -1,19 +1,20 @@
 # Use this file to run your own startup commands
 # See https://github.com/cmderdev/cmder/tree/master/config
-## Add any folder containing EXE file to $PATH
-echo -n "[+] Setting PATH and JAVA_HOME environment variables..."
+## Add important EXE to $PATH
+echo -n "[+] Setting environment variables..."
 cd ..
 javaBinExePath=$(find . -type f -name "java.exe")
 javaBinExePathFolder=$(dirname $(realpath $javaBinExePath))
 javaHome=$(dirname $javaBinExePathFolder)
 export JAVA_HOME=$javaHome
-for p in $(find $(pwd) -maxdepth 5 -type f -name "*.exe")
-do
-	fullPath=$(dirname $p)
-	if [ $(echo $PATH | grep -cF $fullPath) -lt 1 ]
-	then
-		export PATH=$PATH:$fullPath	
-	fi
-done
+export PATH=$javaBinExePathFolder:$PATH
+pythonBinExePath=$(find . -type f -name "python.exe")
+pythonBinExePathFolder=$(dirname $(realpath $pythonBinExePath))
+export PYTHONHOME=$pythonBinExePathFolder
+export PATH=$pythonBinExePathFolder:$PATH
+pipBinExePath=$(find . -type f -name "pip.exe")
+pipExePathFolder=$(dirname $(realpath $pipBinExePath))
+export PATH=$pipExePathFolder:$PATH
+export PATH=$(pwd):$PATH
 echo "OK"
 alias ll='ls --color=auto -rtl'
