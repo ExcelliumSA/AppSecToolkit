@@ -38,10 +38,10 @@ Get-ChildItem -Path "." -Include "*.exe" -Recurse -File -Force -ErrorAction Sile
 		$env:PYTHONHOME = $x
 		$env:PATH = ";$x;" + $env:PATH
 	}	
-	#$d = $_.DirectoryName	
-	#if (-Not ($env:PATH -like "*$d*")) {
-	#	$env:PATH += ";$d;"
-	#}  
+	if ($_.FullName -like "*pip.exe") {
+		$x = $_.DirectoryName
+		$env:PATH = ";$x;" + $env:PATH
+	} 
 }
 Write-Host "OK"
 Remove-Item alias:curl

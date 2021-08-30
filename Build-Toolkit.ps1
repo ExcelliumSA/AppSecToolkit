@@ -151,6 +151,7 @@ function Add-Python {
     pip install termcolor
     pip install requests-pkcs12
     pip install pyodbc
+    pip install httpie
     # Add the version of Python used to perform the operation above:
     # See https://github.com/actions/virtual-environments/blob/main/images/win/Windows2019-Readme.md#language-and-runtime
     Write-Host ">>>> Add Python version to the kit..." -ForegroundColor Yellow
@@ -318,6 +319,9 @@ Add-MiscTools
 Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor Yellow
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
 Remove-Item $WorkFolder\LICENSE -ErrorAction Ignore -Force
+Write-Host "[+] Add utility content and information note..." -ForegroundColor Yellow
+Copy-Item -Path .\patch_python_binaries.py -Destination $WorkFolder
+"Open a PowerShell shell with CMDER and execute the script 'patch_python_binaries.py' from this shell." | Out-File -FilePath $WorkFolder\FirstUsageNote.txt -Encoding "utf8"
 Write-Host "[+] Create the archive..." -ForegroundColor Yellow
 Compress-Archive -Path $WorkFolder -DestinationPath $TKArchiveName -CompressionLevel Optimal
 Write-Host "[+] Cleanup..." -ForegroundColor Yellow
