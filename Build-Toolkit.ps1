@@ -281,6 +281,13 @@ function Add-PythonSecurityUtilityTools {
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
+function Add-CamStudio {
+    Write-Host ">> Add CamStudio screen recorder..." -ForegroundColor Yellow
+    New-Item -ItemType "directory" -Path "$WorkFolder\ScreenRecording"
+    Get-RemoteFile -Uri "https://freefr.dl.sourceforge.net/project/portableapps/CamStudio%20Portable/CamStudioPortable_2.7.4_English.paf.exe" -OutFile "$WorkFolder\ScreenRecording\camstudio-portable.exe" -UseClassicWay
+    Write-Host "<< Added!" -ForegroundColor Yellow
+}
+
 ###############################
 # Main section
 ###############################
@@ -315,6 +322,7 @@ Add-SQLiteBrowser
 Add-Greenshot
 Add-SoapUI
 Add-PythonSecurityUtilityTools
+Add-CamStudio
 Add-MiscTools
 Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor Yellow
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
