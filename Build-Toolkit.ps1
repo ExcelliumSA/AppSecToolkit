@@ -210,6 +210,7 @@ function Add-MiscTools {
     Get-RemoteFile -Uri "https://github.com/nabla-c0d3/sslyze/releases/download/4.1.0/sslyze-4.1.0-exe.zip" -OutFile "$WorkFolder\sslyze.zip"
     Expand-Archive -LiteralPath "$WorkFolder\sslyze.zip" -DestinationPath "$WorkFolder\SSLyze"
     Remove-Item "$WorkFolder\sslyze.zip"
+    Get-RemoteFile -Uri "https://github.com/git-for-windows/git/releases/download/v2.33.0.windows.2/PortableGit-2.33.0.2-64-bit.7z.exe"  -OutFile "$WorkFolder\git-portable-bundle.exe"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
