@@ -105,10 +105,6 @@ function Add-Browsers {
     Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3616824/foxyproxy_standard-7.5.1-an+fx.xpi" -OutFile "$WorkFolder\Browsers\FF-FoxyProxyStandard.xpi" -UseClassicWay
     Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3811501/tab_reloader_page_auto_refresh-0.3.7-fx.xpi" -OutFile "$WorkFolder\Browsers\FF-TabReloader.xpi" -UseClassicWay
     Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3821991/firefox_multi_account_containers-7.4.0-fx.xpi" -OutFile "$WorkFolder\Browsers\FF-MultiAccountContainer.xpi" -UseClassicWay
-    Expand-Archive -LiteralPath "$WorkFolder\Browsers\chromium-portable.zip" -DestinationPath "$WorkFolder\Browsers\Chromium"
-    Expand-Archive -LiteralPath "$WorkFolder\Browsers\firefox-portable.zip" -DestinationPath "$WorkFolder\Browsers\Firefox"
-    Remove-Item "$WorkFolder\Browsers\chromium-portable.zip"
-    Remove-Item "$WorkFolder\Browsers\firefox-portable.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
