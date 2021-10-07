@@ -37,6 +37,8 @@ The file `Hash.txt` contains the SHA-256 digest of the kit ZIP archive.
 
 💬 Once the ZIP is expanded, you can init a shell (Powershell/Bash) in the toolkit using the instance of [CMDER](https://cmder.net/) installed and configured (launch the file `Cmder.exe`).
 
+💬 The Firefox portable bundle was added, as an extra artefact, because it cannot be added to the toolkit archive due to a final file size constraint. See [here](https://github.com/ExcelliumSA/AppSecToolkit/issues/3#issuecomment-937479620) for explanation.
+
 Use the following set of PowerShell commands to grab and check the archive (*copy and paste the block of commands in a PowerShell shell*):
 
 ```powershell
