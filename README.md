@@ -41,11 +41,14 @@ Use the following set of PowerShell commands to grab and check the archive (*cop
 
 ```powershell
 Start-BitsTransfer -Source "https://github.com/ExcelliumSA/AppSecToolkit/releases/download/latest/Toolkit.zip" -Destination ".\Toolkit.zip"
-Start-BitsTransfer -Source "https://github.com/ExcelliumSA/AppSecToolkit/releases/download/latest/Hash.txt" -Destination ".\Hash.txt"
-Get-Content ".\Hash.txt"
+Start-BitsTransfer -Source "https://github.com/ExcelliumSA/AppSecToolkit/releases/download/latest/Hash.txt" -Destination ".\Hash-Toolkit.txt"
+Start-BitsTransfer -Source "https://github.com/ExcelliumSA/AppSecToolkit/releases/download/firefox-portable/FirefoxPortable.zip" -Destination ".\FirefoxPortable.zip"
+Start-BitsTransfer -Source "https://github.com/ExcelliumSA/AppSecToolkit/releases/download/firefox-portable/Hash.txt" -Destination ".\Hash-FirefoxPortable.txt"
+Get-Content ".\Hash-Toolkit.txt"
 Get-FileHash ".\Toolkit.zip" -Algorithm SHA256 | Format-List
-# Check that that hashes are equals, if yes:
-# Expand-Archive -Path .\Toolkit.zip
+Get-Content ".\Hash-FirefoxPortable.txt"
+Get-FileHash ".\FirefoxPortable.zip" -Algorithm SHA256 | Format-List
+# Check that that all hashes are equals
 ```
 
 # Next steps?

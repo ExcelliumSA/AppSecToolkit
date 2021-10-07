@@ -99,8 +99,8 @@ function Add-VSCode {
 
 function Add-Browsers {
     Write-Host ">> Add portable browsers and useful FF extensions..." -ForegroundColor Yellow
+    # Cannot add the FF portable bundle because it cause the final archive to be bigger than the accepted size for an release artefact.
     New-Item -ItemType "directory" -Path "$WorkFolder\Browsers"
-    Get-RemoteFile -Uri "https://github.com/ExcelliumSA/AppSecToolkit/releases/download/firefox-portable/FirefoxPortable.zip" -OutFile "$WorkFolder\Browsers\firefox-portable.zip"
     Get-RemoteFile -Uri "https://storage.googleapis.com/chromium-browser-snapshots/Win_x64/913064/chrome-win.zip" -OutFile "$WorkFolder\Browsers\chromium-portable.zip" -UseClassicWay
     Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3616824/foxyproxy_standard-7.5.1-an+fx.xpi" -OutFile "$WorkFolder\Browsers\FF-FoxyProxyStandard.xpi" -UseClassicWay
     Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3811501/tab_reloader_page_auto_refresh-0.3.7-fx.xpi" -OutFile "$WorkFolder\Browsers\FF-TabReloader.xpi" -UseClassicWay
