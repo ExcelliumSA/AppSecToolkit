@@ -60,7 +60,15 @@ function Add-JDK {
 
 function Add-SecListsRepoCopy {
     Write-Host ">> Add SecLists repo copy..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/danielmiessler/SecLists/archive/refs/heads/master.zip" -OutFile "$WorkFolder\seclists.zip" -UseClassicWay
+    # Only cherry pick some dicts to decrease the final size of the archive
+    $baseUrl = "https://raw.githubusercontent.com/danielmiessler/SecLists/master"
+    $dictsUrls = @("Discovery/Web-Content/common.txt", "Discovery/Web-Content/big.txt", "Discovery/Web-Content/web-mutations.txt", "Discovery/Web-Content/raft-large-words.txt", "Discovery/Web-Content/raft-large-extensions.txt")
+    New-Item -Path "$WorkFolder" -Name "SecLists" -ItemType "directory"
+    Foreach ($dictUrls in $dictsUrls) {
+        $destName = "$WorkFolder\SecLists\" + $dictUrls.split("/")[-1]
+        Write-Host ">>>> Add dict $dictUrls to $destName"
+        Get-RemoteFile -Uri "$baseUrl/$dictUrls" -OutFile $destName -UseClassicWay
+    }    
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
@@ -297,6 +305,7 @@ Remove-Item $WorkFolder -ErrorAction Ignore -Force -Recurse
 Remove-Item $TKArchiveName -ErrorAction Ignore -Force
 New-Item -ItemType "directory" -Path $WorkFolder
 Write-Host "[+] Add tools:" -ForegroundColor Yellow
+Add-SecListsRepoCopy
 Add-Python
 Add-FFUF
 Add-BurpCE
@@ -311,7 +320,6 @@ Add-Sysinternals
 Add-Wireshark
 Add-CyberChef
 Add-PortScanTools
-Add-SecListsRepoCopy
 Add-Nuclei
 Add-Cmder
 Add-7zip
