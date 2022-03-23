@@ -204,7 +204,7 @@ function Add-Cmder {
 function Add-MiscTools {
     Write-Host ">> Add MiscTools..." -ForegroundColor Yellow
     Get-RemoteFile -Uri "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe" -OutFile "$WorkFolder\jq.exe"
-    Get-RemoteFile -Uri "https://curl.se/windows/dl-7.78.0/curl-7.78.0-win64-mingw.zip" -OutFile "$WorkFolder\curl.zip"
+    Get-RemoteFile -Uri "https://curl.se/windows/dl-7.82.0_1/curl-7.82.0_1-win64-mingw.zip" -OutFile "$WorkFolder\curl.zip"
     Expand-Archive -LiteralPath "$WorkFolder\curl.zip" -DestinationPath "$WorkFolder\Curl"
     Remove-Item "$WorkFolder\curl.zip"
     Get-RemoteFile -Uri "http://downloads.sourceforge.net/gnuwin32/wget-1.11.4-1-bin.zip" -OutFile "$WorkFolder\wg.zip"
