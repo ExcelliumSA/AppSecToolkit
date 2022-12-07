@@ -295,6 +295,14 @@ function Add-CamStudio {
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
+function Add-NucleiFuzzingTemplates {
+    Write-Host ">> Add NucleiFuzzingTemplates..." -ForegroundColor Yellow
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/fuzzing-templates/archive/refs/heads/main.zip" -OutFile "$WorkFolder\nft.zip" -UseClassicWay
+    Expand-Archive -LiteralPath "$WorkFolder\nft.zip" -DestinationPath "$WorkFolder"
+    Remove-Item "$WorkFolder\nft.zip"
+    Write-Host "<< Added!" -ForegroundColor Yellow
+}
+
 ###############################
 # Main section
 ###############################
@@ -321,6 +329,7 @@ Add-Wireshark
 Add-CyberChef
 Add-PortScanTools
 Add-Nuclei
+Add-NucleiFuzzingTemplates
 Add-Cmder
 Add-7zip
 Add-WindowsTerminal
