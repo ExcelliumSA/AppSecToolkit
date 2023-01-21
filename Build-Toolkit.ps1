@@ -46,7 +46,7 @@ function Add-FFUF {
 
 function Add-BurpCE {
     Write-Host ">> Add Burp Community Edition..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://portswigger.net/burp/releases/download?product=community&version=2021.8&type=Jar" -OutFile "$WorkFolder\burp.jar"
+    Get-RemoteFile -Uri "https://portswigger.net/burp/releases/download?product=community&version=2022.12.6&type=Jar" -OutFile "$WorkFolder\burp.jar"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
@@ -91,7 +91,7 @@ function Add-JDGUI {
 
 function Add-NotepadPP {
     Write-Host ">> Add Notepad++..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.1.2/npp.8.1.2.portable.x64.zip" -OutFile "$WorkFolder\npp.zip"
+    Get-RemoteFile -Uri "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.4.8/npp.8.4.8.portable.x64.zip" -OutFile "$WorkFolder\npp.zip"
     Expand-Archive -LiteralPath "$WorkFolder\npp.zip" -DestinationPath "$WorkFolder\NotepadPP"
     Remove-Item "$WorkFolder\npp.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
@@ -134,14 +134,14 @@ function Add-Sysinternals {
 
 function Add-Wireshark {
     Write-Host ">> Add Wireshark..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://1.eu.dl.wireshark.org/win64/WiresharkPortable64_4.0.1.paf.exe" -OutFile "$WorkFolder\wireshark-portable.exe"
+    Get-RemoteFile -Uri "https://1.eu.dl.wireshark.org/win64/WiresharkPortable64_4.0.3.paf.exe" -OutFile "$WorkFolder\wireshark-portable.exe"
     Get-RemoteFile -Uri "https://nmap.org/npcap/dist/npcap-1.50.exe" -OutFile "$WorkFolder\npcap.exe"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
 function Add-CyberChef {
     Write-Host ">> Add CyberChef..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/gchq/CyberChef/releases/download/v9.32.1/CyberChef_v9.32.1.zip" -OutFile "$WorkFolder\cc.zip"
+    Get-RemoteFile -Uri "https://github.com/gchq/CyberChef/releases/download/v9.55.0/CyberChef_v9.55.0.zip" -OutFile "$WorkFolder\cc.zip"
     Expand-Archive -LiteralPath "$WorkFolder\cc.zip" -DestinationPath "$WorkFolder\CyberChef"
     Remove-Item "$WorkFolder\cc.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
