@@ -52,7 +52,7 @@ function Add-BurpCE {
 
 function Add-JDK {
     Write-Host ">> Add Java JDK 64 bits..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/adoptium/temurin11-binaries/releases/download/jdk-11.0.12%2B7/OpenJDK11U-jdk_x64_windows_hotspot_11.0.12_7.zip" -OutFile "$WorkFolder\jdk.zip"
+    Get-RemoteFile -Uri "https://github.com/adoptium/temurin17-binaries/releases/download/jdk-17.0.6%2B10/OpenJDK17U-jdk_x64_windows_hotspot_17.0.6_10.zip" -OutFile "$WorkFolder\jdk.zip"
     Expand-Archive -LiteralPath "$WorkFolder\jdk.zip" -DestinationPath "$WorkFolder"
     Remove-Item "$WorkFolder\jdk.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
