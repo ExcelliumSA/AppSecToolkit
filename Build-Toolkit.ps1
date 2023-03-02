@@ -38,7 +38,7 @@ function Get-RemoteFile {
 
 function Add-FFUF {
     Write-Host ">> Add FFUF..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/ffuf/ffuf/releases/download/v1.3.1/ffuf_1.3.1_windows_amd64.zip" -OutFile "$WorkFolder\ffuf.zip"
+    Get-RemoteFile -Uri "https://github.com/ffuf/ffuf/releases/download/v1.5.0/ffuf_1.5.0_windows_amd64.zip" -OutFile "$WorkFolder\ffuf.zip"
     Expand-Archive -LiteralPath "$WorkFolder\ffuf.zip" -DestinationPath "$WorkFolder"
     Remove-Item "$WorkFolder\ffuf.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
@@ -46,7 +46,7 @@ function Add-FFUF {
 
 function Add-BurpCE {
     Write-Host ">> Add Burp Community Edition..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://portswigger.net/burp/releases/download?product=community&version=2022.12.6&type=Jar" -OutFile "$WorkFolder\burp.jar"
+    Get-RemoteFile -Uri "https://portswigger-cdn.net/burp/releases/download?product=community&version=2023.1.3&type=Jar" -OutFile "$WorkFolder\burp.jar"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
@@ -168,7 +168,7 @@ function Add-Python {
 
 function Add-PortScanTools {
     Write-Host ">> Add PortScanTools..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/projectdiscovery/naabu/releases/download/v2.0.4/naabu_2.0.4_windows_amd64.zip" -OutFile "$WorkFolder\nb.zip"
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/naabu/releases/download/v2.1.2/naabu_2.1.2_windows_amd64.zip" -OutFile "$WorkFolder\nb.zip"
     Expand-Archive -LiteralPath "$WorkFolder\nb.zip" -DestinationPath "$WorkFolder\PortScan"
     Remove-Item "$WorkFolder\nb.zip"
     Get-RemoteFile -Uri "https://nmap.org/dist/nmap-7.92-win32.zip" -OutFile "$WorkFolder\nmap.zip"
@@ -210,10 +210,10 @@ function Add-MiscTools {
     Get-RemoteFile -Uri "http://downloads.sourceforge.net/gnuwin32/wget-1.11.4-1-bin.zip" -OutFile "$WorkFolder\wg.zip"
     Expand-Archive -LiteralPath "$WorkFolder\wg.zip" -DestinationPath "$WorkFolder\Wget"
     Remove-Item "$WorkFolder\wg.zip"
-    Get-RemoteFile -Uri "https://github.com/rbsec/sslscan/releases/download/2.0.10/sslscan-win-2.0.10.zip" -OutFile "$WorkFolder\sslscan.zip"
+    Get-RemoteFile -Uri "https://github.com/rbsec/sslscan/releases/download/2.0.15/sslscan-2.0.15.zip" -OutFile "$WorkFolder\sslscan.zip"
     Expand-Archive -LiteralPath "$WorkFolder\sslscan.zip" -DestinationPath "$WorkFolder\SSLScan"
     Remove-Item "$WorkFolder\sslscan.zip"
-    Get-RemoteFile -Uri "https://github.com/nabla-c0d3/sslyze/releases/download/4.1.0/sslyze-4.1.0-exe.zip" -OutFile "$WorkFolder\sslyze.zip"
+    Get-RemoteFile -Uri "https://github.com/nabla-c0d3/sslyze/releases/download/5.1.1/sslyze-5.1.1-exe.zip" -OutFile "$WorkFolder\sslyze.zip"
     Expand-Archive -LiteralPath "$WorkFolder\sslyze.zip" -DestinationPath "$WorkFolder\SSLyze"
     Remove-Item "$WorkFolder\sslyze.zip"
     Get-RemoteFile -Uri "https://github.com/git-for-windows/git/releases/download/v2.33.0.windows.2/PortableGit-2.33.0.2-64-bit.7z.exe"  -OutFile "$WorkFolder\git-portable-bundle.exe"
@@ -238,7 +238,7 @@ function Add-WindowsTerminal {
 
 function Add-Interactsh {
     Write-Host ">> Add Interactsh..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/projectdiscovery/interactsh/releases/download/v0.0.4/interactsh_0.0.4_windows_amd64.zip" -OutFile "$WorkFolder\int.zip"
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/interactsh/releases/download/v1.1.0/interactsh-client_1.1.0_windows_arm64.zip" -OutFile "$WorkFolder\int.zip"
     Expand-Archive -LiteralPath "$WorkFolder\int.zip" -DestinationPath "$WorkFolder\Interactsh"
     "interactsh-client.exe -n 1 -json -o call.json" | Out-File -FilePath "$WorkFolder\Interactsh\ClientUsage-Instruction.txt" -Encoding "utf8" 
     Remove-Item "$WorkFolder\int.zip"
