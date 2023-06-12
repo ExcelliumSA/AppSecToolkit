@@ -6,26 +6,25 @@ on:
     - cron: "0 8 * * 6"
   push:
     branches:
-      - main
+      - main      
+permissions:
+  contents: write
 jobs:
   build:
-    runs-on: ${{ matrix.os }}
-    strategy:
-      matrix:
-        os: [windows-latest]
+    runs-on: windows-latest
     steps:
-      - name: Checkout on ${{ matrix.os }}
+      - name: Checkout
         uses: actions/checkout@v3
-      - name: Assemble tookit on ${{ matrix.os }}
+      - name: Assemble tookit
         run: .\Build-Toolkit.ps1
         shell: powershell
-      - name: Verify ZIP archive on ${{ matrix.os }}
+      - name: Verify ZIP archive
         run: 7z t Toolkit.zip
         shell: powershell
-      - name: Create hash of archive on ${{ matrix.os }}
+      - name: Create hash of archive
         run: Get-FileHash -Algorithm SHA256 .\Toolkit.zip | Format-List | Out-File -FilePath Hash.txt -Encoding "utf8"
         shell: powershell
-      - name: Release the ZIP archive on ${{ matrix.os }}
+      - name: Release the ZIP archive
         uses: marvinpinto/action-automatic-releases@latest
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
