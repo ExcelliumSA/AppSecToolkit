@@ -15,7 +15,7 @@ jobs:
         os: [windows-latest]
     steps:
       - name: Checkout on ${{ matrix.os }}
-        uses: actions/checkout@v2
+        uses: actions/checkout@v3
       - name: Assemble tookit on ${{ matrix.os }}
         run: .\Build-Toolkit.ps1
         shell: powershell
