@@ -134,8 +134,9 @@ function Add-Sysinternals {
 
 function Add-Wireshark {
     Write-Host ">> Add Wireshark..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://2.na.dl.wireshark.org/win64/WiresharkPortable64_4.0.6.paf.exe" -OutFile "$WorkFolder\wireshark-portable.exe"
-    Get-RemoteFile -Uri "https://nmap.org/npcap/dist/npcap-1.50.exe" -OutFile "$WorkFolder\npcap.exe"
+    $WSUrl=(Invoke-WebRequest "https://www.wireshark.org/").Content | Select-String -CaseSensitive -Pattern '(https:\/\/[a-z0-9\./]+WiresharkPortable[0-9\._]+\.paf\.exe)'
+    Get-RemoteFile -Uri $WSUrl.Matches.Value -OutFile "$WorkFolder\wireshark-portable.exe"
+    Get-RemoteFile -Uri "https://nmap.org/npcap/dist/npcap-1.75.exe" -OutFile "$WorkFolder\npcap.exe"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
