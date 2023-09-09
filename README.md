@@ -1,4 +1,4 @@
-[![Assemble Toolkit](https://github.com/ExcelliumSA/AppSecToolkit/actions/workflows/assemble_toolkit.yml/badge.svg?branch=main)](https://github.com/ExcelliumSA/AppSecToolkit/actions/workflows/assemble_toolkit.yml) ![logo](https://img.shields.io/badge/Updated%20Every-Saturday-informational?style=flat&logo=githubactions)
+[![Assemble Toolkit](https://github.com/ExcelliumSA/AppSecToolkit/actions/workflows/assemble_toolkit.yml/badge.svg?branch=main)](https://github.com/ExcelliumSA/AppSecToolkit/actions/workflows/assemble_toolkit.yml) ![logo](https://img.shields.io/badge/Updated%20Every-Saturday-yellow?style=flat&logo=githubactions)
 
 # What?
 
