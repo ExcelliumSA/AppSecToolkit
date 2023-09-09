@@ -142,7 +142,7 @@ function Add-Wireshark {
 
 function Add-CyberChef {
     Write-Host ">> Add CyberChef..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/gchq/CyberChef/releases/download/v9.55.0/CyberChef_v9.55.0.zip" -OutFile "$WorkFolder\cc.zip"
+    Get-RemoteFile -Uri "https://github.com/gchq/CyberChef/releases/download/v10.5.2/CyberChef_v10.5.2.zip" -OutFile "$WorkFolder\cc.zip"
     Expand-Archive -LiteralPath "$WorkFolder\cc.zip" -DestinationPath "$WorkFolder\CyberChef"
     Remove-Item "$WorkFolder\cc.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
@@ -181,7 +181,7 @@ function Add-PortScanTools {
 
 function Add-Nuclei {
     Write-Host ">> Add Nuclei and its templates..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei/releases/download/v2.8.9/nuclei_2.8.9_windows_amd64.zip" -OutFile "$WorkFolder\nuclei.zip"
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei/releases/download/v2.9.14/nuclei_2.9.14_windows_amd64.zip" -OutFile "$WorkFolder\nuclei.zip"
     Expand-Archive -LiteralPath "$WorkFolder\nuclei.zip" -DestinationPath "$WorkFolder"
     Remove-Item "$WorkFolder\nuclei.zip"
     Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei-templates/archive/refs/heads/master.zip" -OutFile "$WorkFolder\nuclei-tpl.zip" -UseClassicWay 
@@ -205,12 +205,9 @@ function Add-Cmder {
 function Add-MiscTools {
     Write-Host ">> Add MiscTools..." -ForegroundColor Yellow
     Get-RemoteFile -Uri "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe" -OutFile "$WorkFolder\jq.exe"
-    Get-RemoteFile -Uri "https://curl.se/windows/dl-7.82.0_1/curl-7.82.0_1-win64-mingw.zip" -OutFile "$WorkFolder\curl.zip"
+    Get-RemoteFile -Uri "https://curl.se/windows/dl-8.2.1_11/curl-8.2.1_11-win64-mingw.zip" -OutFile "$WorkFolder\curl.zip"
     Expand-Archive -LiteralPath "$WorkFolder\curl.zip" -DestinationPath "$WorkFolder\Curl"
     Remove-Item "$WorkFolder\curl.zip"
-    Get-RemoteFile -Uri "http://downloads.sourceforge.net/gnuwin32/wget-1.11.4-1-bin.zip" -OutFile "$WorkFolder\wg.zip"
-    Expand-Archive -LiteralPath "$WorkFolder\wg.zip" -DestinationPath "$WorkFolder\Wget"
-    Remove-Item "$WorkFolder\wg.zip"
     Get-RemoteFile -Uri "https://github.com/rbsec/sslscan/releases/download/2.0.15/sslscan-2.0.15.zip" -OutFile "$WorkFolder\sslscan.zip"
     Expand-Archive -LiteralPath "$WorkFolder\sslscan.zip" -DestinationPath "$WorkFolder\SSLScan"
     Remove-Item "$WorkFolder\sslscan.zip"
