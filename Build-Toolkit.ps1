@@ -38,7 +38,7 @@ function Get-RemoteFile {
 
 function Add-FFUF {
     Write-Host ">> Add FFUF..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/ffuf/ffuf/releases/download/v1.5.0/ffuf_1.5.0_windows_amd64.zip" -OutFile "$WorkFolder\ffuf.zip"
+    Get-RemoteFile -Uri "https://github.com/ffuf/ffuf/releases/download/v2.1.0/ffuf_2.1.0_windows_amd64.zip" -OutFile "$WorkFolder\ffuf.zip"
     Expand-Archive -LiteralPath "$WorkFolder\ffuf.zip" -DestinationPath "$WorkFolder"
     Remove-Item "$WorkFolder\ffuf.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
@@ -46,7 +46,7 @@ function Add-FFUF {
 
 function Add-BurpCE {
     Write-Host ">> Add Burp Community Edition..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://portswigger-cdn.net/burp/releases/download?product=community&version=2023.1.3&type=Jar" -OutFile "$WorkFolder\burp.jar"
+    Get-RemoteFile -Uri "https://portswigger-cdn.net/burp/releases/download?product=community&version=2023.11.1.4&type=Jar" -OutFile "$WorkFolder\burp.jar"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
@@ -91,7 +91,7 @@ function Add-JDGUI {
 
 function Add-NotepadPP {
     Write-Host ">> Add Notepad++..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.4.8/npp.8.4.8.portable.x64.zip" -OutFile "$WorkFolder\npp.zip"
+    Get-RemoteFile -Uri "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.6.2/npp.8.6.2.portable.x64.zip" -OutFile "$WorkFolder\npp.zip"
     Expand-Archive -LiteralPath "$WorkFolder\npp.zip" -DestinationPath "$WorkFolder\NotepadPP"
     Remove-Item "$WorkFolder\npp.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
@@ -118,7 +118,7 @@ function Add-Browsers {
 
 function Add-KeyStoreExplorer {
     Write-Host ">> Add KeyStoreExplorer..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/kaikramer/keystore-explorer/releases/download/v5.4.4/kse-544.zip" -OutFile "$WorkFolder\kse.zip"
+    Get-RemoteFile -Uri "https://github.com/kaikramer/keystore-explorer/releases/download/v5.5.3/kse-553.zip" -OutFile "$WorkFolder\kse.zip"
     Expand-Archive -LiteralPath "$WorkFolder\kse.zip" -DestinationPath "$WorkFolder\KeyStoreExplorer"
     Remove-Item "$WorkFolder\kse.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
@@ -169,7 +169,7 @@ function Add-Python {
 
 function Add-PortScanTools {
     Write-Host ">> Add PortScanTools..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/projectdiscovery/naabu/releases/download/v2.1.2/naabu_2.1.2_windows_amd64.zip" -OutFile "$WorkFolder\nb.zip"
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/naabu/releases/download/v2.2.0/naabu_2.2.0_windows_amd64.zip" -OutFile "$WorkFolder\nb.zip"
     Expand-Archive -LiteralPath "$WorkFolder\nb.zip" -DestinationPath "$WorkFolder\PortScan"
     Remove-Item "$WorkFolder\nb.zip"
     Get-RemoteFile -Uri "https://nmap.org/dist/nmap-7.92-win32.zip" -OutFile "$WorkFolder\nmap.zip"
@@ -178,10 +178,9 @@ function Add-PortScanTools {
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
-
 function Add-Nuclei {
     Write-Host ">> Add Nuclei and its templates..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei/releases/download/v2.9.14/nuclei_2.9.14_windows_amd64.zip" -OutFile "$WorkFolder\nuclei.zip"
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei/releases/download/v3.1.5/nuclei_3.1.5_windows_amd64.zip" -OutFile "$WorkFolder\nuclei.zip"
     Expand-Archive -LiteralPath "$WorkFolder\nuclei.zip" -DestinationPath "$WorkFolder"
     Remove-Item "$WorkFolder\nuclei.zip"
     Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei-templates/archive/refs/heads/master.zip" -OutFile "$WorkFolder\nuclei-tpl.zip" -UseClassicWay 
@@ -192,7 +191,7 @@ function Add-Nuclei {
 
 function Add-Cmder {
     Write-Host ">> Add Cmder (full - include Git portable too)..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/cmderdev/cmder/releases/download/v1.3.18/cmder.zip" -OutFile "$WorkFolder\cmder.zip"
+    Get-RemoteFile -Uri "https://github.com/cmderdev/cmder/releases/download/v1.3.24/cmder.zip" -OutFile "$WorkFolder\cmder.zip"
     Expand-Archive -LiteralPath "$WorkFolder\cmder.zip" -DestinationPath "$WorkFolder\Cmder"
     Remove-Item "$WorkFolder\cmder.zip"
     Write-Host ">>>> Add Powershell profile file" -ForegroundColor Yellow
@@ -227,16 +226,9 @@ function Add-7zip {
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
-function Add-WindowsTerminal {
-    # Provide the file to install it as user on the target machine because no portable mode is provided
-    Write-Host ">> Add WindowsTerminal..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/microsoft/terminal/releases/download/v1.9.1942.0/Microsoft.WindowsTerminal_1.9.1942.0_8wekyb3d8bbwe.msixbundle" -OutFile "$WorkFolder\WindowsTerminal.msixbundle"
-    Write-Host "<< Added!" -ForegroundColor Yellow   
-}
-
 function Add-Interactsh {
     Write-Host ">> Add Interactsh..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/projectdiscovery/interactsh/releases/download/v1.1.0/interactsh-client_1.1.0_windows_arm64.zip" -OutFile "$WorkFolder\int.zip"
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/interactsh/releases/download/v1.1.8/interactsh-client_1.1.8_windows_amd64.zip" -OutFile "$WorkFolder\int.zip"
     Expand-Archive -LiteralPath "$WorkFolder\int.zip" -DestinationPath "$WorkFolder\Interactsh"
     "interactsh-client.exe -n 1 -json -o call.json" | Out-File -FilePath "$WorkFolder\Interactsh\ClientUsage-Instruction.txt" -Encoding "utf8" 
     Remove-Item "$WorkFolder\int.zip"
@@ -261,7 +253,7 @@ function Add-Greenshot {
 
 function Add-SoapUI {
     Write-Host ">> Add SoapUI..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://s3.amazonaws.com/downloads.eviware/soapuios/5.6.0/SoapUI-5.6.0-windows-bin.zip" -OutFile "$WorkFolder\sip.zip" -UseClassicWay
+    Get-RemoteFile -Uri "https://dl.eviware.com/soapuios/5.7.2/SoapUI-5.7.2-windows-bin.zip" -OutFile "$WorkFolder\sip.zip" -UseClassicWay
     Expand-Archive -LiteralPath "$WorkFolder\sip.zip" -DestinationPath "$WorkFolder"
     Remove-Item "$WorkFolder\sip.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
@@ -283,13 +275,6 @@ function Add-PythonSecurityUtilityTools {
     pip install -r "$WorkFolder\jwt_tool-master\requirements.txt"
     pip install pycryptodomex
     Remove-Item "$WorkFolder\jwttool.zip"
-    Write-Host "<< Added!" -ForegroundColor Yellow
-}
-
-function Add-CamStudio {
-    Write-Host ">> Add CamStudio screen recorder..." -ForegroundColor Yellow
-    New-Item -ItemType "directory" -Path "$WorkFolder\ScreenRecording"
-    Get-RemoteFile -Uri "https://freefr.dl.sourceforge.net/project/portableapps/CamStudio%20Portable/CamStudioPortable_2.7.4_English.paf.exe" -OutFile "$WorkFolder\ScreenRecording\camstudio-portable.exe" -UseClassicWay
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
@@ -330,13 +315,11 @@ Add-Nuclei
 Add-NucleiFuzzingTemplates
 Add-Cmder
 Add-7zip
-Add-WindowsTerminal
 Add-Interactsh
 Add-SQLiteBrowser
 Add-Greenshot
 Add-SoapUI
 Add-PythonSecurityUtilityTools
-Add-CamStudio
 Add-MiscTools
 Write-Host "[+] Little cleanup prior to create the archive..." -ForegroundColor Yellow
 Remove-Item $WorkFolder\*.md -ErrorAction Ignore -Force
