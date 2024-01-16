@@ -181,7 +181,7 @@ function Add-PortScanTools {
 function Add-Nuclei {
     Write-Host ">> Add Nuclei and its templates..." -ForegroundColor Yellow
     Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei/releases/download/v3.1.5/nuclei_3.1.5_windows_amd64.zip" -OutFile "$WorkFolder\nuclei.zip"
-    Expand-Archive -LiteralPath "$WorkFolder\nuclei.zip" -DestinationPath "$WorkFolder"
+    Expand-Archive -Force -LiteralPath "$WorkFolder\nuclei.zip" -DestinationPath "$WorkFolder"
     Remove-Item "$WorkFolder\nuclei.zip"
     Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei-templates/archive/refs/heads/master.zip" -OutFile "$WorkFolder\nuclei-tpl.zip" -UseClassicWay 
     Expand-Archive -LiteralPath "$WorkFolder\nuclei-tpl.zip" -DestinationPath "$WorkFolder\NucleiTemplates"
