@@ -237,7 +237,7 @@ function Add-Interactsh {
 
 function Add-SQLiteBrowser {
     Write-Host ">> Add SQLiteBrowser..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://download.sqlitebrowser.org/DB.Browser.for.SQLite-3.12.2-win64.zip" -OutFile "$WorkFolder\sqlite.zip"
+    Get-RemoteFile -Uri "https://github.com/sqlitebrowser/sqlitebrowser/releases/download/v3.12.2/DB.Browser.for.SQLite-3.12.2-win64.zip" -OutFile "$WorkFolder\sqlite.zip"
     Expand-Archive -LiteralPath "$WorkFolder\sqlite.zip" -DestinationPath "$WorkFolder"
     Remove-Item "$WorkFolder\sqlite.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
