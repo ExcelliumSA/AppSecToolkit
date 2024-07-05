@@ -336,3 +336,7 @@ $stopwatch.Stop()
 $processingTime = $stopwatch.Elapsed.Minutes
 Write-Host "[+] Processing finished in $processingTime minutes!" -ForegroundColor Yellow
 Get-FileHash -Algorithm SHA256 $TKArchiveName
+Write-Host "[+] File 'last_release_info.txt' updated." -ForegroundColor Yellow
+Get-FileHash -Algorithm SHA256 $TKArchiveName | Out-File -Path last_release_info.txt -Force
+Get-Date | Out-File -Path last_release_info.txt -Force -Append
+Get-Content -Path last_release_info.txt
