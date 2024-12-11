@@ -36,5 +36,6 @@ jobs:
           files: |
             Toolkit.zip
             Hash.txt
+            Metadata.json
       - name: Update release information file
-        run: git config --global user.email "gha@github.com"; git config --global user.name "GHActionBot"; git commit -m "Sync release files" last_release_info.txt metadata.json; git push
+        run: git config --global user.email "gha@github.com"; git config --global user.name "GHActionBot"; git commit -m "Sync release file" last_release_info.txt; git push
