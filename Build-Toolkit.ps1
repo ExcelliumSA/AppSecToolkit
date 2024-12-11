@@ -134,7 +134,7 @@ function Add-Sysinternals {
 
 function Add-Wireshark {
     Write-Host ">> Add Wireshark..." -ForegroundColor Yellow
-    $WSUrl=(Invoke-WebRequest "https://www.wireshark.org/").Content | Select-String -CaseSensitive -Pattern '(https:\/\/[a-z0-9\./]+WiresharkPortable[0-9\._]+\.paf\.exe)'
+    $WSUrl = (Invoke-WebRequest "https://www.wireshark.org/").Content | Select-String -CaseSensitive -Pattern '(https:\/\/[a-z0-9\./]+WiresharkPortable[0-9\._]+\.paf\.exe)'
     Get-RemoteFile -Uri $WSUrl.Matches.Value -OutFile "$WorkFolder\wireshark-portable.exe"
     Get-RemoteFile -Uri "https://nmap.org/npcap/dist/npcap-1.75.exe" -OutFile "$WorkFolder\npcap.exe"
     Write-Host "<< Added!" -ForegroundColor Yellow
@@ -328,6 +328,7 @@ Remove-Item $WorkFolder\Python\Lib\venv -Recurse -ErrorAction Ignore -Force
 Write-Host "[+] Add utility content and information note..." -ForegroundColor Yellow
 Copy-Item -Path .\patch_python_binaries.py -Destination $WorkFolder
 "Open a PowerShell shell with CMDER and execute the script 'patch_python_binaries.py' from this shell." | Out-File -FilePath $WorkFolder\FirstUsageNote.txt -Encoding "utf8"
+.\Update-ToolkitMetadata.ps1
 Write-Host "[+] Create the archive..." -ForegroundColor Yellow
 Compress-Archive -Path $WorkFolder -DestinationPath $TKArchiveName -CompressionLevel Optimal
 Write-Host "[+] Cleanup..." -ForegroundColor Yellow
