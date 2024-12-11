@@ -6,7 +6,9 @@ on:
     - cron: "0 8 * * 6"
   push:
     branches:
-      - main      
+      - main 
+    paths:
+      - "**/*.ps1"
 permissions:
   contents: write
 jobs:
