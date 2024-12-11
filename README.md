@@ -34,6 +34,9 @@ The files `user_profile.(ps1|sh)` are used to define profile in [CMDER](https://
 > [!TIP]
 > 📦A release can be downloaded [here](https://github.com/ExcelliumSA/AppSecToolkit/releases/tag/latest).
 
+> [!NOTE]
+> 🕓This [file](last_release_info.txt) contain the datetime/hash information about the last toolkit release.
+
 📝Files:
 
 * `Hash.txt` contains the SHA-256 digest of the kit ZIP archive.
