@@ -9,7 +9,7 @@
 ###############################
 # Program constants
 ###############################
-New-Variable -Name MetadataFile -Value "Metadata.json" -Option Constant
+New-Variable -Name MetadataFile -Value "metadata.json" -Option Constant
 New-Variable -Name BuildScriptSourceFile -Value "Build-Toolkit.ps1" -Option Constant
 New-Variable -Name WorkFolder -Value "work" -Option Constant
 
