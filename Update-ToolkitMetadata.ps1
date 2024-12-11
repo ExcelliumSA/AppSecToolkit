@@ -38,5 +38,5 @@ Get-ChildItem -Path $WorkFolder -Include $executableExtensions -Recurse -File -D
     $vtReport = "https://www.virustotal.com/gui/file/$hash"
     $metadata.ExecutableFiles += [PSCustomObject]@{Alg = $alg; Hash = $hash; FileName = $fName; VirusTotalScanReportURL = $vtReport }			
 }
-$metadata | ConvertTo-Json -Compress -Depth 100 | Out-File -FilePath $MetadataFile -Encoding "utf8"
+$metadata | ConvertTo-Json -Depth 100 | Out-File -FilePath $MetadataFile -Encoding "utf8"
 Write-Host "[+] File updated." -ForegroundColor Yellow
