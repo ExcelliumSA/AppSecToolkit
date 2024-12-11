@@ -32,9 +32,12 @@ The files `user_profile.(ps1|sh)` are used to define profile in [CMDER](https://
 # Distribution of the kit
 
 > [!TIP]
-> 📦A release can be downloaded [here](https://github.com/ExcelliumSA/AppSecToolkit/releases/tag/latest). The file `Hash.txt` contains the SHA-256 digest of the kit ZIP archive.
+> 📦A release can be downloaded [here](https://github.com/ExcelliumSA/AppSecToolkit/releases/tag/latest).
 
-💡The file [metadata.json](metadata.json) contains information, about the current bundle release, that can be used to identify files that can trigger alert by an antivirus software.
+📝Files:
+
+* `Hash.txt` contains the SHA-256 digest of the kit ZIP archive.
+* `Metadata.json` contains information, about the current bundle release, that can be used to identify files that can trigger alert by an antivirus software.
 
 💬 Once the ZIP is expanded, you can init a shell (Powershell/Bash) in the toolkit using the instance of [CMDER](https://cmder.net/) installed and configured (launch the file `Cmder.exe`).
 
