@@ -163,7 +163,7 @@ function Add-Python {
     # See https://github.com/actions/virtual-environments/blob/main/images/win/Windows2019-Readme.md#language-and-runtime
     Write-Host ">>>> Add Python version to the kit..." -ForegroundColor Yellow
     New-Item -ItemType "directory" -Path "$WorkFolder\Python"
-    Copy-Item -Path "C:\hostedtoolcache\windows\Python\3.7.9\x64\*" -Destination "$WorkFolder\Python" -Recurse
+    Copy-Item -Path "C:\hostedtoolcache\windows\Python\3.12.8\x64\*" -Destination "$WorkFolder\Python" -Recurse
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
