@@ -91,7 +91,7 @@ function Add-JDGUI {
 
 function Add-NotepadPP {
     Write-Host ">> Add Notepad++..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.6.2/npp.8.6.2.portable.x64.zip" -OutFile "$WorkFolder\npp.zip"
+    Get-RemoteFile -Uri "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.7.7/npp.8.7.7.portable.x64.zip" -OutFile "$WorkFolder\npp.zip"
     Expand-Archive -LiteralPath "$WorkFolder\npp.zip" -DestinationPath "$WorkFolder\NotepadPP"
     Remove-Item "$WorkFolder\npp.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
@@ -142,7 +142,7 @@ function Add-Wireshark {
 
 function Add-CyberChef {
     Write-Host ">> Add CyberChef..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/gchq/CyberChef/releases/download/v10.5.2/CyberChef_v10.5.2.zip" -OutFile "$WorkFolder\cc.zip"
+    Get-RemoteFile -Uri "https://github.com/gchq/CyberChef/releases/download/v10.19.4/CyberChef_v10.19.4.zip" -OutFile "$WorkFolder\cc.zip"
     Expand-Archive -LiteralPath "$WorkFolder\cc.zip" -DestinationPath "$WorkFolder\CyberChef"
     Remove-Item "$WorkFolder\cc.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
@@ -169,7 +169,7 @@ function Add-Python {
 
 function Add-PortScanTools {
     Write-Host ">> Add PortScanTools..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/projectdiscovery/naabu/releases/download/v2.2.0/naabu_2.2.0_windows_amd64.zip" -OutFile "$WorkFolder\nb.zip"
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/naabu/releases/download/v2.3.4/naabu_2.3.4_windows_amd64.zip" -OutFile "$WorkFolder\nb.zip"
     Expand-Archive -LiteralPath "$WorkFolder\nb.zip" -DestinationPath "$WorkFolder\PortScan"
     Remove-Item "$WorkFolder\nb.zip"
     Get-RemoteFile -Uri "https://nmap.org/dist/nmap-7.92-win32.zip" -OutFile "$WorkFolder\nmap.zip"
@@ -180,7 +180,7 @@ function Add-PortScanTools {
 
 function Add-Nuclei {
     Write-Host ">> Add Nuclei and its templates..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei/releases/download/v3.1.5/nuclei_3.1.5_windows_amd64.zip" -OutFile "$WorkFolder\nuclei.zip"
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei/releases/download/v3.3.8/nuclei_3.3.8_windows_amd64.zip" -OutFile "$WorkFolder\nuclei.zip"
     Expand-Archive -Force -LiteralPath "$WorkFolder\nuclei.zip" -DestinationPath "$WorkFolder"
     Remove-Item "$WorkFolder\nuclei.zip"
     Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei-templates/archive/refs/heads/master.zip" -OutFile "$WorkFolder\nuclei-tpl.zip" -UseClassicWay 
@@ -207,13 +207,13 @@ function Add-MiscTools {
     Get-RemoteFile -Uri "https://curl.se/windows/dl-8.2.1_11/curl-8.2.1_11-win64-mingw.zip" -OutFile "$WorkFolder\curl.zip"
     Expand-Archive -LiteralPath "$WorkFolder\curl.zip" -DestinationPath "$WorkFolder\Curl"
     Remove-Item "$WorkFolder\curl.zip"
-    Get-RemoteFile -Uri "https://github.com/rbsec/sslscan/releases/download/2.0.15/sslscan-2.0.15.zip" -OutFile "$WorkFolder\sslscan.zip"
+    Get-RemoteFile -Uri "https://github.com/rbsec/sslscan/releases/download/2.1.6/sslscan-2.1.6.zip" -OutFile "$WorkFolder\sslscan.zip"
     Expand-Archive -LiteralPath "$WorkFolder\sslscan.zip" -DestinationPath "$WorkFolder\SSLScan"
     Remove-Item "$WorkFolder\sslscan.zip"
-    Get-RemoteFile -Uri "https://github.com/nabla-c0d3/sslyze/releases/download/5.1.1/sslyze-5.1.1-exe.zip" -OutFile "$WorkFolder\sslyze.zip"
+    Get-RemoteFile -Uri "https://github.com/nabla-c0d3/sslyze/releases/download/6.1.0/sslyze-6.1.0-exe.zip" -OutFile "$WorkFolder\sslyze.zip"
     Expand-Archive -LiteralPath "$WorkFolder\sslyze.zip" -DestinationPath "$WorkFolder\SSLyze"
     Remove-Item "$WorkFolder\sslyze.zip"
-    Get-RemoteFile -Uri "https://github.com/git-for-windows/git/releases/download/v2.33.0.windows.2/PortableGit-2.33.0.2-64-bit.7z.exe"  -OutFile "$WorkFolder\git-portable-bundle.exe"
+    Get-RemoteFile -Uri "https://github.com/git-for-windows/git/releases/download/v2.47.1.windows.2/Git-2.47.1.2-64-bit.exe"  -OutFile "$WorkFolder\git-portable-bundle.exe"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
@@ -221,14 +221,14 @@ function Add-7zip {
     # No portable version of 7zip with GUI provided so instruction are provided to install it as USER on the target machine
     Write-Host ">> Add 7zip..." -ForegroundColor Yellow
     New-Item -ItemType "directory" -Path "$WorkFolder\7zip"    
-    "msiexec /i 7z2201-x64.exe INSTALLDIR=$pwd\7-Zip\ MSIINSTALLPERUSER=1" | Out-File -FilePath "$WorkFolder\7zip\Install-Instruction.txt" -Encoding "utf8" 
-    Get-RemoteFile -Uri "https://www.7-zip.org/a/7z2201-x64.exe" -OutFile "$WorkFolder\7zip\7z1900-x64.msi"
+    "msiexec /i 7z.exe INSTALLDIR=$pwd\7-Zip\ MSIINSTALLPERUSER=1" | Out-File -FilePath "$WorkFolder\7zip\Install-Instruction.txt" -Encoding "utf8" 
+    Get-RemoteFile -Uri "https://www.7-zip.org/a/7z2409-x64.exe" -OutFile "$WorkFolder\7zip\7z.msi"
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
 function Add-Interactsh {
     Write-Host ">> Add Interactsh..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/projectdiscovery/interactsh/releases/download/v1.1.8/interactsh-client_1.1.8_windows_amd64.zip" -OutFile "$WorkFolder\int.zip"
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/interactsh/releases/download/v1.2.3/interactsh-client_1.2.3_windows_amd64.zip" -OutFile "$WorkFolder\int.zip"
     Expand-Archive -LiteralPath "$WorkFolder\int.zip" -DestinationPath "$WorkFolder\Interactsh"
     "interactsh-client.exe -n 1 -json -o call.json" | Out-File -FilePath "$WorkFolder\Interactsh\ClientUsage-Instruction.txt" -Encoding "utf8" 
     Remove-Item "$WorkFolder\int.zip"
