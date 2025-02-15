@@ -37,6 +37,9 @@ The files `user_profile.(ps1|sh)` are used to define profile in [CMDER](https://
 > [!NOTE]
 > 🕓This [file](last_release_info.txt) contain the datetime/hash information about the last toolkit release.
 
+> [!CAUTION]
+> IAS consultants, at the end of the assessment, must execute the script [Clear-Workstation.ps1](Clear-Workstation.ps1) (included into the toolkit) to let the workstation in a **as much as possible** clean state.
+
 📝Files:
 
 * `Hash.txt` contains the SHA-256 digest of the kit ZIP archive.
