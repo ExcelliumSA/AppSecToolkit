@@ -327,6 +327,7 @@ Remove-Item $WorkFolder\LICENSE -ErrorAction Ignore -Force
 Remove-Item $WorkFolder\Python\Lib\venv -Recurse -ErrorAction Ignore -Force
 Write-Host "[+] Add utility content and information note..." -ForegroundColor Yellow
 Copy-Item -Path .\patch_python_binaries.py -Destination $WorkFolder
+Copy-Item -Path .\Clear-Workstation.ps1 -Destination $WorkFolder
 "Open a PowerShell shell with CMDER and execute the script 'patch_python_binaries.py' from this shell." | Out-File -FilePath $WorkFolder\FirstUsageNote.txt -Encoding "utf8"
 .\Update-ToolkitMetadata.ps1
 Write-Host "[+] Create the archive..." -ForegroundColor Yellow
