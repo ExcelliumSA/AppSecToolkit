@@ -1,24 +1,28 @@
-$filesAndfolders = @("$env:APPDATA\BurpSuite", "$env:APPDATA\nuclei", "$env:USERPROFILE\nuclei-templates", "$env:LOCALAPPDATA\sqlmap")
-foreach ($item in $filesAndfolders) {
-    Write-Host "[>] Removing item '$item'..." -NoNewline
-    if (Test-Path "$item" -PathType Leaf) {
-        Remove-Item -Path "$item" -Force -ErrorAction SilentlyContinue
-    }
-    elseif (Test-Path "$item" -PathType Container) {
-        Remove-Item -Path "$item" -Force -Recurse -ErrorAction SilentlyContinue
-    }
-    if (Test-Path "$item") {
-        Write-Host "Failed!" -ForegroundColor Red
-    }
-    else {
-        Write-Host "Done." -ForegroundColor Green
-    }    
+$filesOrfolders = @("nuclei", "nuclei-templates", "sqlmap", "Mozilla", "Mozilla Firefox", "Notepad++", "ffuf", "Chromium", "BurpSuiteCommunity", "BurpSuite")
+$baseFolders =  @("$env:USERPROFILE", "$env:LOCALAPPDATA", "$env:APPDATA")
+$foldersToClean = @("$env:TEMP", "$env:USERPROFILE\Downloads", "$env:USERPROFILE\Pictures", "$env:USERPROFILE\Documents")
+foreach ($baseFolder in $baseFolders) {
+	foreach ($fileOrfolder in $filesOrfolders) {
+		$target = "$baseFolder\$fileOrfolder"
+		Write-Host "[>] Removing if exists file or folder '$target'..." -NoNewline
+		if (Test-Path "$target" -PathType Leaf) {
+			Remove-Item -Path "$target" -Force -ErrorAction SilentlyContinue
+		}
+		elseif (Test-Path "$target" -PathType Container) {
+			Remove-Item -Path "$target" -Force -Recurse -ErrorAction SilentlyContinue
+		}
+		if (Test-Path "$target") {
+			Write-Host "Failed!" -ForegroundColor Red
+		}
+		else {
+			Write-Host "Done." -ForegroundColor Green
+		}    
+	}
 }
-Write-Host "[>] Cleaning folder TEMP '$env:TEMP'..." -NoNewline
-Remove-Item -Path "$env:TEMP\*" -Force -Recurse -ErrorAction SilentlyContinue 
-Write-Host "Done." -ForegroundColor Green
-Write-Host "[>] Cleaning folder DOWNLOADS '$env:USERPROFILE\Downloads'..." -NoNewline
-Remove-Item -Path "$env:USERPROFILE\Downloads\*" -Force -Recurse -ErrorAction SilentlyContinue 
-Write-Host "Done." -ForegroundColor Green
+foreach ($folderToClean in $foldersToClean) {
+	Write-Host "[>] Cleaning folder '$folderToClean'..." -NoNewline
+	Remove-Item -Path "$folderToClean\*" -Force -Recurse -ErrorAction SilentlyContinue 
+	Write-Host "Done." -ForegroundColor Green
+}
 Write-Host "[>] Search any BurpSuite local CA installed in the Windows certificate store..."
 Get-ChildItem Cert:\ -Recurse | Where-Object { $_.Issuer -like "*PortSwigger*" }
