@@ -66,3 +66,30 @@ Get-FileHash ".\FirefoxPortable.zip" -Algorithm SHA256 | Format-List
 # Next steps?
 
 See [here](https://github.com/ExcelliumSA/AppSecToolkit/projects/2).
+
+# Miscellaneous
+
+> [!NOTE]
+> Content is not linked to the toolkit itself. It is stored here to made it available to our client.
+
+💡 The folder [miscellaneous](miscellaneous) contains different materials that are useful, in some context, during the activities of the AppSec practice.
+
+## Scripts
+
+### Count-Endpoints.ps1
+
+🔬It is a script that is intented to help a client to identify the number of controllers or SOAP/REST API endpoints that a web application contains based on its source code.
+
+🎯The goal is help him to provided such information when requesting an assessment of a web application.
+
+💻Example of usage:
+
+```powershell
+PS> Count-Endpoints.ps1 -codeLocation "[APP_PROJECT_FOLDER]"
+[*] Check the provided folder...
+111 files found with supported technologies.
+[*] Analyse the provided folder...
+Technology: DOTNET
+Framework : AspNet-Core-API
+Endpoints : 25 identified
+```
