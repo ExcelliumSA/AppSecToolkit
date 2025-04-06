@@ -78,9 +78,9 @@ See [here](https://github.com/ExcelliumSA/AppSecToolkit/projects/2).
 
 ### Count-Endpoints.ps1
 
-🔬It is a script that is intented to help a client to identify the number of controllers or SOAP/REST API endpoints that a web application contains based on its source code.
+🔬It is a [script](miscellaneous/Count-Endpoints.ps1) that is intented to help a client to identify the number of controllers or SOAP/REST API endpoints that a web application contains based on its source code.
 
-🎯The goal is help him to provided such information when requesting an assessment of a web application.
+🎯The goal is help him to provides such information when requesting an assessment of a web application.
 
 💻Example of usage:
 
