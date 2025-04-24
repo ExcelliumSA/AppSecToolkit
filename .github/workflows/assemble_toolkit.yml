@@ -28,7 +28,7 @@ jobs:
         run: Get-FileHash -Algorithm SHA256 .\Toolkit.zip | Format-List | Out-File -FilePath Hash.txt -Encoding "utf8"
         shell: powershell
       - name: Release the ZIP archive
-        uses: marvinpinto/action-automatic-releases@latest
+        uses: marvinpinto/action-automatic-releases@v1.2.1
         with:
           repo_token: "${{ secrets.GITHUB_TOKEN }}"
           automatic_release_tag: "latest"
