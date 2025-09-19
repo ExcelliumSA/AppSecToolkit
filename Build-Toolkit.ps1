@@ -46,7 +46,7 @@ function Add-FFUF {
 
 function Add-BurpCE {
     Write-Host ">> Add Burp Community Edition..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://portswigger-cdn.net/burp/releases/download?product=community&version=2023.11.1.4&type=Jar" -OutFile "$WorkFolder\burp.jar" -UseClassicWay
+    Get-RemoteFile -Uri "https://portswigger.net/burp/releases/download?product=community&version=2025.8.4&type=Jar" -OutFile "$WorkFolder\burp.jar" -UseClassicWay
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
