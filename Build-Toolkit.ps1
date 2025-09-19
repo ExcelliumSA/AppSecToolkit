@@ -169,7 +169,7 @@ function Add-Python {
 
 function Add-PortScanTools {
     Write-Host ">> Add PortScanTools..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/projectdiscovery/naabu/releases/download/v2.3.4/naabu_2.3.4_windows_amd64.zip" -OutFile "$WorkFolder\nb.zip"
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/naabu/releases/download/v2.3.5/naabu_2.3.5_windows_amd64.zip" -OutFile "$WorkFolder\nb.zip"
     Expand-Archive -LiteralPath "$WorkFolder\nb.zip" -DestinationPath "$WorkFolder\PortScan"
     Remove-Item "$WorkFolder\nb.zip"
     Get-RemoteFile -Uri "https://nmap.org/dist/nmap-7.92-win32.zip" -OutFile "$WorkFolder\nmap.zip"
@@ -180,7 +180,7 @@ function Add-PortScanTools {
 
 function Add-Nuclei {
     Write-Host ">> Add Nuclei and its templates..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei/releases/download/v3.3.8/nuclei_3.3.8_windows_amd64.zip" -OutFile "$WorkFolder\nuclei.zip"
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei/releases/download/v3.4.10/nuclei_3.4.10_windows_amd64.zip" -OutFile "$WorkFolder\nuclei.zip"
     Expand-Archive -Force -LiteralPath "$WorkFolder\nuclei.zip" -DestinationPath "$WorkFolder"
     Remove-Item "$WorkFolder\nuclei.zip"
     Get-RemoteFile -Uri "https://github.com/projectdiscovery/nuclei-templates/archive/refs/heads/master.zip" -OutFile "$WorkFolder\nuclei-tpl.zip" -UseClassicWay 
@@ -191,7 +191,7 @@ function Add-Nuclei {
 
 function Add-Cmder {
     Write-Host ">> Add Cmder (full - include Git portable too)..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/cmderdev/cmder/releases/download/v1.3.24/cmder.zip" -OutFile "$WorkFolder\cmder.zip"
+    Get-RemoteFile -Uri "https://github.com/cmderdev/cmder/releases/download/v1.3.25/cmder.zip" -OutFile "$WorkFolder\cmder.zip"
     Expand-Archive -LiteralPath "$WorkFolder\cmder.zip" -DestinationPath "$WorkFolder\Cmder"
     Remove-Item "$WorkFolder\cmder.zip"
     Write-Host ">>>> Add Powershell profile file" -ForegroundColor Yellow
