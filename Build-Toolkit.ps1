@@ -70,6 +70,15 @@ function Add-SecListsRepoCopy {
         Get-RemoteFile -Uri "$baseUrl/$dictUrls" -OutFile $destName -UseClassicWay
     }    
     Write-Host "<< Added!" -ForegroundColor Yellow
+    Write-Host ">> Add fuzzing dictionaries from 'param-miner'..." -ForegroundColor Yellow
+    $baseUrl = "https://raw.githubusercontent.com/PortSwigger/param-miner/refs/heads/master/resources"
+    $dictsUrls = @("headers", "params")
+    Foreach ($dictUrls in $dictsUrls) {
+        $destName = "$WorkFolder\SecLists\" + $dictUrls + ".txt"
+        Write-Host ">>>> Add dict $dictUrls to $destName"
+        Get-RemoteFile -Uri "$baseUrl/$dictUrls" -OutFile $destName -UseClassicWay
+    }    
+    Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
 function Add-DNSpy {
