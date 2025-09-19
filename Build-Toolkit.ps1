@@ -100,7 +100,7 @@ function Add-JDGUI {
 
 function Add-NotepadPP {
     Write-Host ">> Add Notepad++..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.7.7/npp.8.7.7.portable.x64.zip" -OutFile "$WorkFolder\npp.zip"
+    Get-RemoteFile -Uri "https://github.com/notepad-plus-plus/notepad-plus-plus/releases/download/v8.8.5/npp.8.8.5.portable.x64.zip" -OutFile "$WorkFolder\npp.zip"
     Expand-Archive -LiteralPath "$WorkFolder\npp.zip" -DestinationPath "$WorkFolder\NotepadPP"
     Remove-Item "$WorkFolder\npp.zip"
     Write-Host "<< Added!" -ForegroundColor Yellow
@@ -213,13 +213,13 @@ function Add-Cmder {
 function Add-MiscTools {
     Write-Host ">> Add MiscTools..." -ForegroundColor Yellow
     Get-RemoteFile -Uri "https://github.com/stedolan/jq/releases/download/jq-1.6/jq-win64.exe" -OutFile "$WorkFolder\jq.exe"
-    Get-RemoteFile -Uri "https://curl.se/windows/dl-8.2.1_11/curl-8.2.1_11-win64-mingw.zip" -OutFile "$WorkFolder\curl.zip"
+    Get-RemoteFile -Uri "https://curl.se/windows/dl-8.16.0_2/curl-8.16.0_2-win64-mingw.zip" -OutFile "$WorkFolder\curl.zip"
     Expand-Archive -LiteralPath "$WorkFolder\curl.zip" -DestinationPath "$WorkFolder\Curl"
     Remove-Item "$WorkFolder\curl.zip"
-    Get-RemoteFile -Uri "https://github.com/rbsec/sslscan/releases/download/2.1.6/sslscan-2.1.6.zip" -OutFile "$WorkFolder\sslscan.zip"
+    Get-RemoteFile -Uri "https://github.com/rbsec/sslscan/releases/download/2.2.0/sslscan-2.2.0.zip" -OutFile "$WorkFolder\sslscan.zip"
     Expand-Archive -LiteralPath "$WorkFolder\sslscan.zip" -DestinationPath "$WorkFolder\SSLScan"
     Remove-Item "$WorkFolder\sslscan.zip"
-    Get-RemoteFile -Uri "https://github.com/nabla-c0d3/sslyze/releases/download/6.1.0/sslyze-6.1.0-exe.zip" -OutFile "$WorkFolder\sslyze.zip"
+    Get-RemoteFile -Uri "https://github.com/nabla-c0d3/sslyze/releases/download/6.2.0/sslyze-6.2.0-exe.zip" -OutFile "$WorkFolder\sslyze.zip"
     Expand-Archive -LiteralPath "$WorkFolder\sslyze.zip" -DestinationPath "$WorkFolder\SSLyze"
     Remove-Item "$WorkFolder\sslyze.zip"
     Get-RemoteFile -Uri "https://github.com/git-for-windows/git/releases/download/v2.47.1.windows.2/Git-2.47.1.2-64-bit.exe"  -OutFile "$WorkFolder\git-portable-bundle.exe"
@@ -237,7 +237,7 @@ function Add-7zip {
 
 function Add-Interactsh {
     Write-Host ">> Add Interactsh..." -ForegroundColor Yellow
-    Get-RemoteFile -Uri "https://github.com/projectdiscovery/interactsh/releases/download/v1.2.3/interactsh-client_1.2.3_windows_amd64.zip" -OutFile "$WorkFolder\int.zip"
+    Get-RemoteFile -Uri "https://github.com/projectdiscovery/interactsh/releases/download/v1.2.4/interactsh-client_1.2.4_windows_amd64.zip" -OutFile "$WorkFolder\int.zip"
     Expand-Archive -LiteralPath "$WorkFolder\int.zip" -DestinationPath "$WorkFolder\Interactsh"
     "interactsh-client.exe -n 1 -json -o call.json" | Out-File -FilePath "$WorkFolder\Interactsh\ClientUsage-Instruction.txt" -Encoding "utf8" 
     Remove-Item "$WorkFolder\int.zip"
