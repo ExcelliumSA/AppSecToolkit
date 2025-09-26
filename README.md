@@ -80,7 +80,7 @@ rm -rf $THALES_HOME
 mkdir $THALES_HOME
 # Basic tools that represents the foundation
 sudo apt update -y 
-sudo apt install -y git ffuf curl wget jq vim nano gcc golang hydra seclists chromium nmap burpsuite nikto dirsearch python3-requests python3-pip httpie exiftool openssl file tar
+sudo apt install -y git ffuf curl wget jq vim nano gcc golang hydra seclists chromium nmap burpsuite nikto dirsearch python3-requests python3-pip httpie exiftool openssl file tar python3
 # Tools from ProjectDiscovery
 go install  github.com/projectdiscovery/pdtm/cmd/pdtm@latest
 $HOME/go/bin/pdtm -install-all
