@@ -63,6 +63,37 @@ Get-FileHash ".\FirefoxPortable.zip" -Algorithm SHA256 | Format-List
 # Check that that all hashes are equals
 ```
 
+# Toolkit failover
+
+> [!CAUTION]
+> This failover is intended to be used when the client cannot provide the initial toolkit due to internal issue. It is a **last chance option** to allow an assessment to be performed.
+
+> [!IMPORTANT]
+> Execute the script **as the user that will be provided to the consultant** to access to the KALI.
+
+⚠️ If it is not possible to use the toolkit then a **[KALI virtual machine](https://www.kali.org/get-kali/#kali-platforms) must be provided** on which the following script must be executed **prior access to be given to the consultant**:
+
+```bash
+#!/bin/bash
+THALES_HOME="$HOME/Documents/Thales"
+rm -rf $THALES_HOME 
+mkdir $THALES_HOME
+# Basic tools that represents the foundation
+sudo apt update -y 
+sudo apt install -y git ffuf curl wget jq vim nano gcc golang hydra seclists chromium nmap burpsuite nikto dirsearch python3-requests python3-pip httpie exiftool openssl file tar
+# Tools from ProjectDiscovery
+go install  github.com/projectdiscovery/pdtm/cmd/pdtm@latest
+$HOME/go/bin/pdtm -install-all
+$HOME/.pdtm/go/bin/nuclei -update-templates
+# Tools to check TLS
+git clone --depth 1 https://github.com/testssl/testssl.sh.git --branch 3.3dev "$THALES_HOME/testssl"
+# Visual Studio Code for custom scripts
+wget -O "$THALES_HOME/vscode.tar.gz" "https://code.visualstudio.com/sha/download?build=stable&os=linux-x64"
+cd $THALES_HOME
+tar xvf vscode.tar.gz
+cd -
+```
+
 # Next steps?
 
 See [here](https://github.com/ExcelliumSA/AppSecToolkit/projects/2).
