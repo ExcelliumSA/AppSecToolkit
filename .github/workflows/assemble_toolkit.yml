@@ -21,20 +21,20 @@ jobs:
       - name: Assemble tookit
         run: .\Build-Toolkit.ps1
         shell: powershell
-      - name: Verify ZIP archive
-        run: 7z t Toolkit.zip
+      - name: Verify archive
+        run: 7z t Toolkit.7z
         shell: powershell
       - name: Create hash of archive
-        run: Get-FileHash -Algorithm SHA256 .\Toolkit.zip | Format-List | Out-File -FilePath Hash.txt -Encoding "utf8"
+        run: Get-FileHash -Algorithm SHA256 .\Toolkit.7z | Format-List | Out-File -FilePath Hash.txt -Encoding "utf8"
         shell: powershell
-      - name: Create release for the ZIP archive
+      - name: Create release for the archive
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
           COMMIT_REF: ${{ github.sha }}
           GITHUB_REPOSITORY: ${{ github.repository }}
         run: |
           $TAG=Get-Date -UFormat "%Y%d%m%H%m"
-          gh release create "$TAG" --latest --repo="$env:GITHUB_REPOSITORY" --title="Bundle build from commit $env:COMMIT_REF" --generate-notes Toolkit.zip Hash.txt Metadata.json
+          gh release create "$TAG" --latest --repo="$env:GITHUB_REPOSITORY" --title="Bundle build from commit $env:COMMIT_REF" --generate-notes Toolkit.7z Hash.txt Metadata.json
         shell: powershell
       - name: Update release information file
         run: git config --global user.email "gha@github.com"; git config --global user.name "GHActionBot"; git commit -m "Sync release file" last_release_info.txt; git push
