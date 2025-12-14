@@ -12,7 +12,7 @@
 # Program constants
 ###############################
 New-Variable -Name WorkFolder -Value "work" -Option Constant
-New-Variable -Name TKArchiveName -Value "Toolkit.zip" -Option Constant
+New-Variable -Name TKArchiveName -Value "Toolkit.7z" -Option Constant
 
 ###############################
 # Utility internal functions
@@ -29,7 +29,8 @@ function Get-RemoteFile {
     )
     # See https://adamtheautomator.com/powershell-download-file/
     if ($UseClassicWay) {
-        (New-Object Net.WebClient).Downloadfile($Uri, $OutFile)
+        # (New-Object Net.WebClient).Downloadfile($Uri, $OutFile)
+        Invoke-WebRequest -Uri "$Uri" -OutFile "$OutFile"
     }
     else {
         Start-BitsTransfer -Source $Uri -Destination $OutFile -TransferType Download
@@ -115,7 +116,7 @@ function Add-VSCode {
 }
 
 function Add-Browsers {
-    Write-Host ">> Add portable browsers and useful FF extensions..." -ForegroundColor Yellow
+    Write-Host ">> Add portable browsers..." -ForegroundColor Yellow
     # Cannot add the FF portable bundle because it cause the final archive to be bigger than the accepted size for an release artefact.
     New-Item -ItemType "directory" -Path "$WorkFolder\Browsers"
     Get-RemoteFile -Uri "https://storage.googleapis.com/chromium-browser-snapshots/Win_x64/913064/chrome-win.zip" -OutFile "$WorkFolder\Browsers\chromium-portable.zip" -UseClassicWay
@@ -337,7 +338,13 @@ Copy-Item -Path .\Clear-Workstation.ps1 -Destination $WorkFolder
 "Open a PowerShell shell with CMDER and execute the script 'patch_python_binaries.py' from this shell." | Out-File -FilePath $WorkFolder\FirstUsageNote.txt -Encoding "utf8"
 .\Update-ToolkitMetadata.ps1
 Write-Host "[+] Create the archive..." -ForegroundColor Yellow
-Compress-Archive -Path $WorkFolder -DestinationPath $TKArchiveName -CompressionLevel Optimal
+# Compress-Archive -Path $WorkFolder -DestinationPath $TKArchiveName -CompressionLevel Optimal
+7z a -t7z -mx=9 -r $TKArchiveName $WorkFolder\*
+7z t $TKArchiveName
+if($LASTEXITCODE -ne 0){ 
+  Write-Host "[!!!!] Archive corrupted!"
+  exit 250 
+}
 Write-Host "[+] Cleanup..." -ForegroundColor Yellow
 Remove-Item $WorkFolder -ErrorAction Ignore -Force -Recurse
 $stopwatch.Stop()
