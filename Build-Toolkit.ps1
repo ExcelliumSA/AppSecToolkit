@@ -119,9 +119,6 @@ function Add-Browsers {
     # Cannot add the FF portable bundle because it cause the final archive to be bigger than the accepted size for an release artefact.
     New-Item -ItemType "directory" -Path "$WorkFolder\Browsers"
     Get-RemoteFile -Uri "https://storage.googleapis.com/chromium-browser-snapshots/Win_x64/913064/chrome-win.zip" -OutFile "$WorkFolder\Browsers\chromium-portable.zip" -UseClassicWay
-    Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3616824/foxyproxy_standard-7.5.1-an+fx.xpi" -OutFile "$WorkFolder\Browsers\FF-FoxyProxyStandard.xpi" -UseClassicWay
-    Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3811501/tab_reloader_page_auto_refresh-0.3.7-fx.xpi" -OutFile "$WorkFolder\Browsers\FF-TabReloader.xpi" -UseClassicWay
-    Get-RemoteFile -Uri "https://addons.mozilla.org/firefox/downloads/file/3821991/firefox_multi_account_containers-7.4.0-fx.xpi" -OutFile "$WorkFolder\Browsers\FF-MultiAccountContainer.xpi" -UseClassicWay
     Write-Host "<< Added!" -ForegroundColor Yellow
 }
 
