@@ -42,26 +42,10 @@ The files `user_profile.(ps1|sh)` are used to define profile in [CMDER](https://
 
 📝Files:
 
-* `Hash.txt` contains the SHA-256 digest of the kit ZIP archive.
+* `Hash.txt` contains the SHA-256 digest of the kit archive.
 * `Metadata.json` contains information, about the current bundle release, that can be used to identify files that can trigger alert by an antivirus software.
 
-💬 Once the ZIP is expanded, you can init a shell (Powershell/Bash) in the toolkit using the instance of [CMDER](https://cmder.net/) installed and configured (launch the file `Cmder.exe`).
-
-💬 The Firefox portable bundle was added, as an extra artefact, because it cannot be added to the toolkit archive due to a final file size constraint. See [here](https://github.com/ExcelliumSA/AppSecToolkit/issues/3#issuecomment-937479620) for explanation.
-
-Use the following set of PowerShell commands to grab and check the archive (*copy and paste the block of commands in a PowerShell shell*):
-
-```powershell
-Start-BitsTransfer -Source "https://github.com/ExcelliumSA/AppSecToolkit/releases/download/latest/Toolkit.zip" -Destination ".\Toolkit.zip"
-Start-BitsTransfer -Source "https://github.com/ExcelliumSA/AppSecToolkit/releases/download/latest/Hash.txt" -Destination ".\Hash-Toolkit.txt"
-Start-BitsTransfer -Source "https://github.com/ExcelliumSA/AppSecToolkit/releases/download/firefox-portable/FirefoxPortable.zip" -Destination ".\FirefoxPortable.zip"
-Start-BitsTransfer -Source "https://github.com/ExcelliumSA/AppSecToolkit/releases/download/firefox-portable/Hash.txt" -Destination ".\Hash-FirefoxPortable.txt"
-Get-Content ".\Hash-Toolkit.txt"
-Get-FileHash ".\Toolkit.zip" -Algorithm SHA256 | Format-List
-Get-Content ".\Hash-FirefoxPortable.txt"
-Get-FileHash ".\FirefoxPortable.zip" -Algorithm SHA256 | Format-List
-# Check that that all hashes are equals
-```
+💬 Once the archive is expanded, you can init a shell (Powershell/Bash) in the toolkit using the instance of [CMDER](https://cmder.net/) installed and configured (launch the file `Cmder.exe`).
 
 # Toolkit failover
 
